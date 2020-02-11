@@ -8,6 +8,7 @@ var proxy = "__PROXY__";
 var userrules = [
   "||forums.malwarebytes.com",
   "||geeksforgeeks.org",
+  "||dribble.com",
   "||steamdb.info",
   "||hexo.io",
   "||rust-lang.org",
