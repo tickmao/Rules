@@ -800,8 +800,8 @@ Proxy Group:
 - name: "自动节点选择"
   type: url-test
   proxies:
-    - "American"
-    - "Japan"
+    - "你的SS节点1"
+    - "你的SS节点2"
   url: 'http://www.gstatic.com/generate_204'
   interval: 300
 
@@ -810,8 +810,8 @@ Proxy Group:
   type: select
   proxies:
     - "自动节点选择"
-    - "American"
-    - "Japan"
+    - "你的SS节点1"
+    - "你的SS节点2"
 # 白名单模式 PROXY，黑名单模式 DIRECT
 - name: "Final"
   type: select
@@ -829,15 +829,15 @@ Proxy Group:
   type: select
   proxies:
     - "PROXY"
-    - "American"
-    - "Japan"
+    - "你的SS节点1"
+    - "你的SS节点2"
 # 大陆流媒体面向港澳台限定服务
 - name: "HKMTMedia"
   type: select
   proxies:
     - "DIRECT"
-    - "American"
-    - "Japan"
+    - "你的SS节点1"
+    - "你的SS节点2"
 # 运营商及声名狼藉网站劫持
 - name: "Hijacking"
   type: select
