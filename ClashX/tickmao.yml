@@ -743,30 +743,6 @@ Proxy:
 #    mode: tls # or http               #  大部分选择 HTTP
 #  #  host: bing.com                  #  伪装
 
-# Shadowsocks + simple-obfs
-- name: "American"
-  type: ss
-  server: 66.42.107.96
-  port: 6888
-  cipher: aes-256-gcm
-  password: "962464"
-  plugin: obfs
-  plugin-opts:
-    mode: tls # or http               #  大部分选择 HTTP
-   # host: bing.com                  #  伪装
-
-# Shadowsocks + simple-obfs
-- name: "Japan"
-  type: ss
-  server: 43.224.34.208
-  port: 7788
-  cipher: aes-256-gcm
-  password: "962464"
-  plugin: obfs
-  plugin-opts:
-    mode: tls # or http               #  大部分选择 HTTP
-   # host: bing.com                  #  伪装
-
 # vmess
 # 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
 # - name: "vmess"
