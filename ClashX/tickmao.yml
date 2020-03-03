@@ -732,7 +732,7 @@ Proxy:
 
 # Shadowsocks + simple-obfs
 # 第二种配置
-#- name: "你的SS节点1"               # 软件显示的节点名字
+#- name: "你的SS节点2"               # 软件显示的节点名字
 #  type: ss                                  # 代理类型
 #  server: 1.2.4.8                          # 服务器 IP
 #  port: 443                                 #  端口号
@@ -742,6 +742,25 @@ Proxy:
 #  plugin-opts:
 #    mode: tls # or http               #  大部分选择 HTTP
 #  #  host: bing.com                  #  伪装
+
+# Shadowsocks + v2ray-plugin
+# 第三种配置
+# - name: "你的SS节点3"
+#   type: ss
+#   server: 1.2.4.8
+#   port: 443
+#   cipher: chacha20-ietf-poly1305
+#   password: "password"
+#   plugin: v2ray-plugin
+#   plugin-opts:
+#     mode: websocket # no QUIC now
+#     # tls: true # wss
+#     # skip-cert-verify: true
+#     # host: bing.com
+#     # path: "/"
+#     # mux: true
+#     # headers:
+#     #   custom: value
 
 # vmess
 # 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
