@@ -2,8 +2,8 @@
 
 >- Shadowsocks pac file
 >- Shadowrocket.conf
->- Clash yaml
-
+>- Clash.yaml
+>- Quantumult_tickmao.conf
 ## 背景
 
 因为部分网站没有默认开启代理，所以新增一部分自定义 Shadowsocks 的 rule。另外喜欢使用Clash的用户也增加一部分这里的设置作为参考
@@ -11,6 +11,10 @@
 ## Shadowsocks 方法
 
 将 pac.txt/user-rule.txt 任意一个替换 Shadowsocks 本地文件夹中的同名文件即可。
+
+## Quantumult X 方法
+
+获取 Quantumult_tickmao.conf 地址链接在软件中下载使用即可。
 
 ## Shadowrocket 方法
 

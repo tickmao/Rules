@@ -5,20 +5,20 @@
 # 配置文件需要放置在 $HOME/.config/clash/config.yml
 # 或者运行目录下的config.yml
 ###############################################################
+# 混合端口 HTTP和SOCKS5用一个端口
+mixed-port: 7890
+
 # HTTP 代理端口
-port: 7890
+# port: 7890
 
 # SOCKS5 代理端口
 socks-port: 7891
 
-# Linux 和 macOS 的 redir 透明代理端口 (重定向 TCP 和 TProxy UDP 流量)
+# Linux 和 macOS 的 redir 代理端口 (如需使用此功能，请取消注释)
 # redir-port: 7892
 
 # Linux 的透明代理端口（适用于 TProxy TCP 和 TProxy UDP 流量)
 # tproxy-port: 7893
-
-# HTTP(S) and SOCKS5 共用端口
-# mixed-port: 7890
 
 # 本地 SOCKS5/HTTP(S) 服务验证
 # authentication:
@@ -27,11 +27,13 @@ socks-port: 7891
 
 # 允许局域网的连接（可用来共享代理）
 allow-lan: true
+
+# 仅在将allow-lan设置为true时适用
+# #"*": 绑定所有IP地址
+# #192.168.122.11: 绑定单个IPv4地址
+# #"[aaaa::a8aa:ff:fe09:57d8]": 绑定单个IPv6地址
 bind-address: "*"
-# 此功能仅在 allow-lan 设置为 true 时生效，支持三种参数：
-# "*"                           绑定所有的 IP 地址
-# 192.168.122.11                绑定一个的 IPv4 地址
-# "[aaaa::a8aa:ff:fe09:57d8]"   绑定一个 IPv6 地址
+ipv6: false
 
 # Clash 路由工作模式
 # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）
@@ -40,22 +42,33 @@ mode: rule
 # Clash 默认将日志输出至 STDOUT
 # 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
 # 5 个级别：silent / info / warning / error / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
-log-level: info
+log-level: silent
 
 # clash 的 RESTful API 监听地址
 external-controller: 127.0.0.1:9090
 
-# 存放配置文件的相对路径，或存放网页静态资源的绝对路径
-# Clash core 将会将其部署在 http://{{external-controller}}/ui
+# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `RESTful API/ui`
+# 参数应填写配置目录的相对路径或绝对路径。
+# http://127.0.0.1:9090/ui/#/
 # external-ui: folder
+# yacd面板：  https://github.com/haishanh/yacd
+# Razord面板：http://clash.razord.top/#/proxies
+# external-ui: dashboard
 
 # RESTful API 的口令 (可选)
 # 通过 HTTP 头中 Authorization: Bearer ${secret} 参数来验证口令
 # 当 RESTful API 的监听地址为 0.0.0.0 时，请务必设定口令以保证安全
 # secret: ""
 
-# 出站网卡接口
-# interface-name: en0
+# 实验性功能
+experimental:
+  ignore-resolve-fail: true # 忽略 DNS 解析失败，默认值为 true
+  # interface-name: en0 # outbound interface name
+
+# 本地 SOCKS5 / HTTP(S) 服务认证
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
 
 # DNS 服务器和建立连接时的 静态 Hosts, 仅在 dns.enhanced-mode 模式为 redir-host 生效
 # 支持通配符域名 (例如: *.clash.dev, *.foo.*.example.com )
@@ -71,40 +84,27 @@ hosts:
 
 # DNS 服务器配置(可选；若不配置，程序内置的 DNS 服务会被关闭)
 dns:
-  enable: true
+  enable: true # 是否启用dns false
   listen: 0.0.0.0:53
-  ipv6: true # 当此选项为 false 时, AAAA 请求将返回空
-
-  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
-  # 仅填写 DNS 服务器的 IP 地址
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-    - 8.8.8.8
+  ipv6: false # 当此选项为 false 时, AAAA 请求将返回空
   enhanced-mode: fake-ip # 或 redir-host
   fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
   # use-hosts: true # 查询 hosts 并返回 IP 记录
-
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
-    # === LAN ===
     - '*.lan'
-    # === Linksys Wireless Router ===
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    # === Apple Software Update Service ===
-    - 'swscan.apple.com'
-    - 'mesu.apple.com'
-    # === Windows 10 Connnect Detection ===
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
-    # === NTP Service ===
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
     - 'time.*.com'
     - 'time.*.gov'
     - 'time.*.edu.cn'
     - 'time.*.apple.com'
-
     - 'time1.*.com'
     - 'time2.*.com'
     - 'time3.*.com'
@@ -112,8 +112,6 @@ dns:
     - 'time5.*.com'
     - 'time6.*.com'
     - 'time7.*.com'
-
-    - 'ntp.*.com'
     - 'ntp.*.com'
     - 'ntp1.*.com'
     - 'ntp2.*.com'
@@ -122,53 +120,52 @@ dns:
     - 'ntp5.*.com'
     - 'ntp6.*.com'
     - 'ntp7.*.com'
-
     - '*.time.edu.cn'
     - '*.ntp.org.cn'
     - '+.pool.ntp.org'
-
     - 'time1.cloud.tencent.com'
-    # === Music Service ===
-    ## NetEase
-    - '+.music.163.com'
+    - 'music.163.com'
+    - '*.music.163.com'
     - '*.126.net'
-    ## Baidu
     - 'musicapi.taihe.com'
     - 'music.taihe.com'
-    ## Kugou
     - 'songsearch.kugou.com'
     - 'trackercdn.kugou.com'
-    ## Kuwo
     - '*.kuwo.cn'
-    ## JOOX
     - 'api-jooxtt.sanook.com'
     - 'api.joox.com'
     - 'joox.com'
-    ## QQ
-    - '+.y.qq.com'
-    - '+.music.tc.qq.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
     - 'aqqmusic.tc.qq.com'
-    - '+.stream.qqmusic.qq.com'
-    ## Xiami
+    - 'amobile.music.tc.qq.com'
     - '*.xiami.com'
-    ## Migu
-    - '+.music.migu.cn'
-    # === Game Service ===
-    ## Nintendo Switch
-    - '+.srv.nintendo.net'
-    ## Sony PlayStation
-    - '+.stun.playstation.net'
-    ## Microsoft Xbox
-    - 'xbox.*.microsoft.com'
-    - '+.xboxlive.com'
-    # === Other ===
-    ## QQ Quick Login
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
     - 'localhost.ptlogin2.qq.com'
-    ## Golang
+    - 'localhost.sec.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - 'xnotify.xboxlive.com'
+    - '+.battlenet.com.cn'
+    - '+.wotgame.cn'
+    - '+.wggames.cn'
+    - '+.wowsgame.cn'
+    - '+.wargaming.net'
     - 'proxy.golang.org'
-    ## STUN Server
     - 'stun.*.*'
     - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
     - '+.stun.*.*.*.*'
     - 'heartbeat.belkin.com'
     - '*.linksys.com'
@@ -186,35 +183,30 @@ dns:
     - '*.square-enix.com'
     - '*.finalfantasyxiv.com'
     - '*.ffxiv.com'
-    ## Bilibili CDN
     - '*.mcdn.bilivideo.cn'
 
+
+  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
   # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
   # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
   # Clash 会使用最先获得的解析记录回复 DNS 请求
   nameserver:
-    - https://doh.pub/dns-query
-    - https://doh.dns.sb/dns-query
-    - https://dns.adguard.com/dns-query
-    - https://cdn-doh.ssnm.xyz/dns-query
     - 223.5.5.5 # 阿里DNS
     - 180.76.76.76 # 百度DNS
     - 119.29.29.29 # 腾讯DNS
     - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
     - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
     - 114.114.114.114 # 114DNS
+    - https://doh.pub/dns-query
+    - https://doh.dns.sb/dns-query
+    - https://dns.adguard.com/dns-query
+    - https://cdn-doh.ssnm.xyz/dns-query
     - https://dns.alidns.com/dns-query # 阿里 DoH DNS
     - https://doh.360.cn/dns-query # 360 DoH DNS
 
   # 当 fallback 参数被配置时, DNS 请求将同时发送至上方 nameserver 列表和下方 fallback 列表中配置的所有 DNS 服务器.
   # 当解析得到的 IP 地址的地理位置不是 CN 时，clash 将会选用 fallback 中 DNS 服务器的解析结果。
   fallback:
-    - https://dns.quad9.net:5053/dns-query
-    - https://dns-unfiltered.adguard.com/dns-query
-    - https://doh.opendns.com/dns-query
-    - https://1.0.0.1/dns-query
-    - https://public.dns.iij.jp/dns-query
-    - https://dns.twnic.tw/dns-query
     - 8.8.8.8 # 谷歌DNS
     - 1.1.1.1 # Cloudflare DNS
     - tls://dns.rubyfish.cn:853
@@ -235,7 +227,7 @@ dns:
   #
   # 采取以上逻辑进行域名解析是为了对抗 DNS 投毒攻击。
   fallback-filter:
-    geoip: false
+    geoip: true
     ipcidr:
       - 0.0.0.0/8
       - 10.0.0.0/8
@@ -309,37 +301,123 @@ proxy-providers:
       interval: 120
       url: http://www.gstatic.com/generate_204
 
-dns:
-  enable: true
-  ipv6: true
-  listen: 0.0.0.0:53
-  default-nameserver:
-    - 119.29.29.29
-    - 223.5.5.5
-    - 8.8.4.4
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - localhost.ptlogin2.qq.com
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.xboxlive.com'
-    - 'msftconnecttest.com'
-    - 'xbox.*.microsoft.com'
-    - '*.battlenet.com.cn'
-    - '*.battlenet.com'
-    - '*.blzstatic.cn'
-    - '*.battle.net'
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://dns.google/dns-query
 
 proxies:
+###############################################################配置分割线
+# shadowsocks
+# 所支持的加密方式与 go-shadowsocks2 保持一致
+# 支持加密方式：
+#   aes-128-gcm aes-192-gcm aes-256-gcm
+#   aes-128-cfb aes-192-cfb aes-256-cfb
+#   aes-128-ctr aes-192-ctr aes-256-ctr
+#   rc4-md5 chacha20-ietf xchacha20
+#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 
+# Shadowsocks
+# 第一种配置
+#- name: "你的SS节点1"               # 软件显示的节点名字
+#  type: ss                                  # 代理类型
+#  server: 1.2.4.8                          # 服务器 IP
+#  port: 443                                 #  端口号
+#  cipher: chacha20-ietf-poly1305   # 加密方法
+#  password: "password"                # SS 密码
+#  # udp: true                                #默认不开启
+
+# Shadowsocks + simple-obfs
+# 第二种配置
+#- name: "你的SS节点2"               # 软件显示的节点名字
+#  type: ss                                  # 代理类型
+#  server: 1.2.4.8                          # 服务器 IP
+#  port: 443                                 #  端口号
+#  cipher: chacha20-ietf-poly1305   # 加密方法
+#  password: "password"                # SS 密码
+#  plugin: obfs
+#  plugin-opts:
+#    mode: tls # or http               #  大部分选择 HTTP
+#  #  host: bing.com                  #  伪装
+
+# Shadowsocks + v2ray-plugin
+# 第三种配置
+# - name: "你的SS节点3"
+#   type: ss
+#   server: 1.2.4.8
+#   port: 443
+#   cipher: chacha20-ietf-poly1305
+#   password: "password"
+#   plugin: v2ray-plugin
+#   plugin-opts:
+#     mode: websocket # no QUIC now
+#     # tls: true # wss
+#     # skip-cert-verify: true
+#     # host: bing.com
+#     # path: "/"
+#     # mux: true
+#     # headers:
+#     #   custom: value
+
+# vmess
+# 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
+# - name: "vmess"
+#   type: vmess
+#   server: server
+#   port: 443
+#   uuid: uuid
+#   alterId: 32
+#   cipher: auto
+#   udp: true
+#   tls: true
+#   skip-cert-verify: true
+#   network: ws
+#   ws-path: /path
+#   ws-headers:
+#     Host: v2ray.com
+
+# socks5
+# - name: "socks"
+#   type: socks5
+#   server: server
+#   port: 443
+#   username: username
+#   password: password
+#   tls: true
+#   skip-cert-verify: true
+#   udp: true
+
+# http
+# - name: "http"
+#   type: http
+#   server: server
+#   port: 443
+#   username: username
+#   password: password
+#   tls: true # https
+#   skip-cert-verify: true
+
+# snell
+# - name: "snell"
+#   type: snell
+#   server: server
+#   port: 44046
+#   psk: yourpsk
+#   obfs-opts:
+  #   mode: http # 或 tls
+  #   host: bing.com
+
+# Trojan的配置
+# - name: "trojan"
+#   type: trojan
+#   server: server
+#   port: 443
+#   password: password
+#   #上面几行为必选参数
+#   #下面几行为可选参数  根据你的配置情况来
+#   # udp: true
+#   # sni: example.com # aka server name
+#   # alpn:
+#   #   - h2
+#   #   - http/1.1
+#   # skip-cert-verify: true
+###############################################################配置分割线
 
 proxy-groups:
   - name: 🚀 手动切换
