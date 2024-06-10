@@ -6,11 +6,11 @@
 
 * QuantumultX 配置：
 
-[https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf](https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf)
+  [https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf](https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf)
 
 * Clash Verge rev 配置：
 
- [https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml)
+  [https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml)
 
 * Clash for windows 配置：
 
