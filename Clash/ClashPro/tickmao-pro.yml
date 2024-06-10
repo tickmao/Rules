@@ -1,306 +1,105 @@
 ###############################################################
-# 本范例来源为网络
-# Github 搜索 Tickmao
-# 网站：https://www.tickmao.com
-# 配置文件需要放置在 $HOME/.config/clash/config.yml
-# 或者运行目录下的config.yml
+# @ConfigName        Tickmao自用的Clash Verge Rev配置文件
+# @Author            Tickmao
+# @Feedback          ✉️请通过邮件反馈问题：lyle.lypm@gmail.com 
+# @UpdateTime        ⏱2024/06/10 12:00 UTC/GMT +8
+# @Function          💡请参考对应的注释或Tag，深度使用可参考对应说明：https://repcz.github.io/proxytool/
+# @Function          注释符号，去掉此类#/;符号，该行才会生效
+# @Config            欢迎访问本人的小破站： https://tickmao.com/
+# @Tg                TG:https://t.me/mwkds
+# @ConfigURL         https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml
+# @Tips              💬本项目涉及的脚本仅用于资源共享和学习研究，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断，特别感谢相应作者的无私贡献。本项目的任何内容不得用于商业或非法目的，否则后果自负。一旦使用并复制了该项目的任何文件，则视为您已接受此免责声明。
 ###############################################################
 # 混合端口 HTTP和SOCKS5用一个端口
 mixed-port: 7890
-
-# HTTP 代理端口
-# port: 7890
-
-# SOCKS5 代理端口
-socks-port: 7891
-
-# Linux 和 macOS 的 redir 代理端口 (如需使用此功能，请取消注释)
-# redir-port: 7892
-
-# Linux 的透明代理端口（适用于 TProxy TCP 和 TProxy UDP 流量)
-# tproxy-port: 7893
-
-# 本地 SOCKS5/HTTP(S) 服务验证
-# authentication:
-#  - "user1:pass1"
-#  - "user2:pass2"
-
+# TCP 并发连接所有 IP, 将使用最快握手的 TCP
+tcp-concurrent: true
 # 允许局域网的连接（可用来共享代理）
 allow-lan: true
-
-# 仅在将allow-lan设置为true时适用
-# #"*": 绑定所有IP地址
-# #192.168.122.11: 绑定单个IPv4地址
-# #"[aaaa::a8aa:ff:fe09:57d8]": 绑定单个IPv6地址
-bind-address: "*"
+# 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录  
 ipv6: false
-
-# Clash 路由工作模式
-# 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）
+# 规则模式：rule/global/direct/script
 mode: rule
+# 设置日志输出级别: silent/error/warning/info/debug
+log-level: info
+# 全局 TLS 指纹
+global-client-fingerprint: chrome
+# 匹配所有进程（always/strict/off）
+find-process-mode: strict
 
-# Clash 默认将日志输出至 STDOUT
-# 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
-# 5 个级别：silent / info / warning / error / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
-log-level: silent
+# 使用geoip.dat数据库
+geodata-mode: true
+geox-url:
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: 'https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb'
+                         
+profile:
+  # 存储 select 选择记录
+  store-selected: true 
+  # 持久化 fake-ip
+  store-fake-ip: true  
 
-# clash 的 RESTful API 监听地址
-external-controller: 127.0.0.1:9090
+# 嗅探域名 可选配置
+sniffer:               
+  enable: true
+  # 是否使用嗅探结果作为实际访问，默认 true
+  parse-pure-ip: true  
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
 
-# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `RESTful API/ui`
-# 参数应填写配置目录的相对路径或绝对路径。
-# http://127.0.0.1:9090/ui/#/
-# external-ui: folder
-# yacd面板：  https://github.com/haishanh/yacd
-# Razord面板：http://clash.razord.top/#/proxies
-# external-ui: dashboard
-
-# RESTful API 的口令 (可选)
-# 通过 HTTP 头中 Authorization: Bearer ${secret} 参数来验证口令
-# 当 RESTful API 的监听地址为 0.0.0.0 时，请务必设定口令以保证安全
-# secret: ""
-
-# 实验性功能
-experimental:
-  ignore-resolve-fail: true # 忽略 DNS 解析失败，默认值为 true
-  # interface-name: en0 # outbound interface name
-
-# 本地 SOCKS5 / HTTP(S) 服务认证
-# authentication:
-#  - "user1:pass1"
-#  - "user2:pass2"
-
-# DNS 服务器和建立连接时的 静态 Hosts, 仅在 dns.enhanced-mode 模式为 redir-host 生效
-# 支持通配符域名 (例如: *.clash.dev, *.foo.*.example.com )
-# 不使用通配符的域名优先级高于使用通配符的域名 (例如: foo.example.com > *.example.com > .example.com )
-# 注意: +.foo.com 的效果等同于 .foo.com 和 foo.com
-hosts:
-# '*.clash.dev': 127.0.0.1
-# '.dev': 127.0.0.1
-# 'alpha.clash.dev': '::1'
-  'mtalk.google.com': 108.177.125.188
-  'services.googleapis.cn': 74.125.203.94
-  'raw.githubusercontent.com': 151.101.76.133
-
-# DNS 服务器配置(可选；若不配置，程序内置的 DNS 服务会被关闭)
+# Tun 配置  
+tun:
+  enable: true
+  # 可选： system/gvisor/mixed；
+  stack: mixed
+  # dns劫持,一般设置为 any:53 即可, 即劫持所有53端口的udp流量
+  dns-hijack: [any:53]
+  # 自动设置全局路由，可以自动将全局流量路由进入tun网卡。
+  auto-route: true
+  # 自动识别出口网卡
+  auto-detect-interface: true
+        
 dns:
-  enable: true # 是否启用dns false
-  listen: 0.0.0.0:53
-  ipv6: false # 当此选项为 false 时, AAAA 请求将返回空
-  enhanced-mode: fake-ip # 或 redir-host
-  fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
-  # use-hosts: true # 查询 hosts 并返回 IP 记录
-  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
-  fake-ip-filter:
-    # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - 'time.*.com'
-    - 'time.*.gov'
-    - 'time.*.edu.cn'
-    - 'time.*.apple.com'
-    - 'time1.*.com'
-    - 'time2.*.com'
-    - 'time3.*.com'
-    - 'time4.*.com'
-    - 'time5.*.com'
-    - 'time6.*.com'
-    - 'time7.*.com'
-    - 'ntp.*.com'
-    - 'ntp1.*.com'
-    - 'ntp2.*.com'
-    - 'ntp3.*.com'
-    - 'ntp4.*.com'
-    - 'ntp5.*.com'
-    - 'ntp6.*.com'
-    - 'ntp7.*.com'
-    - '*.time.edu.cn'
-    - '*.ntp.org.cn'
-    - '+.pool.ntp.org'
-    - 'time1.cloud.tencent.com'
-    - 'music.163.com'
-    - '*.music.163.com'
-    - '*.126.net'
-    - 'musicapi.taihe.com'
-    - 'music.taihe.com'
-    - 'songsearch.kugou.com'
-    - 'trackercdn.kugou.com'
-    - '*.kuwo.cn'
-    - 'api-jooxtt.sanook.com'
-    - 'api.joox.com'
-    - 'joox.com'
-    - 'y.qq.com'
-    - '*.y.qq.com'
-    - 'streamoc.music.tc.qq.com'
-    - 'mobileoc.music.tc.qq.com'
-    - 'isure.stream.qqmusic.qq.com'
-    - 'dl.stream.qqmusic.qq.com'
-    - 'aqqmusic.tc.qq.com'
-    - 'amobile.music.tc.qq.com'
-    - '*.xiami.com'
-    - '*.music.migu.cn'
-    - 'music.migu.cn'
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
-    - 'msftconnecttest.com'
-    - 'msftncsi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'localhost.sec.qq.com'
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - 'xbox.*.microsoft.com'
-    - 'xnotify.xboxlive.com'
-    - '+.battlenet.com.cn'
-    - '+.wotgame.cn'
-    - '+.wggames.cn'
-    - '+.wowsgame.cn'
-    - '+.wargaming.net'
-    - 'proxy.golang.org'
-    - 'stun.*.*'
-    - 'stun.*.*.*'
-    - '+.stun.*.*'
-    - '+.stun.*.*.*'
-    - '+.stun.*.*.*.*'
-    - 'heartbeat.belkin.com'
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - '*.router.asus.com'
-    - 'mesu.apple.com'
-    - 'swscan.apple.com'
-    - 'swquery.apple.com'
-    - 'swdownload.apple.com'
-    - 'swcdn.apple.com'
-    - 'swdist.apple.com'
-    - 'lens.l.google.com'
-    - 'stun.l.google.com'
-    - '+.nflxvideo.net'
-    - '*.square-enix.com'
-    - '*.finalfantasyxiv.com'
-    - '*.ffxiv.com'
-    - '*.mcdn.bilivideo.cn'
-
-
-  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
-  # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
-  # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
-  # Clash 会使用最先获得的解析记录回复 DNS 请求
-  nameserver:
-    - 223.5.5.5 # 阿里DNS
-    - 180.76.76.76 # 百度DNS
-    - 119.29.29.29 # 腾讯DNS
-    - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
-    - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
-    - 114.114.114.114 # 114DNS
-    - https://doh.pub/dns-query
-    - https://doh.dns.sb/dns-query
-    - https://dns.adguard.com/dns-query
-    - https://cdn-doh.ssnm.xyz/dns-query
-    - https://dns.alidns.com/dns-query # 阿里 DoH DNS
-    - https://doh.360.cn/dns-query # 360 DoH DNS
-
-  # 当 fallback 参数被配置时, DNS 请求将同时发送至上方 nameserver 列表和下方 fallback 列表中配置的所有 DNS 服务器.
-  # 当解析得到的 IP 地址的地理位置不是 CN 时，clash 将会选用 fallback 中 DNS 服务器的解析结果。
-  fallback:
-    - 8.8.8.8 # 谷歌DNS
-    - 1.1.1.1 # Cloudflare DNS
-    - tls://dns.rubyfish.cn:853
-    - tls://1.0.0.1:853
-    - tls://dns.google:853
-    - https://dns.rubyfish.cn/dns-query
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-
-  # 如果使用 nameserver 列表中的服务器解析的 IP 地址在下方列表中的子网中，则它们被认为是无效的，
-  # Clash 会选用 fallback 列表中配置 DNS 服务器解析得到的结果。
-  #
-  # 当 fallback-filter.geoip 为 true 且 IP 地址的地理位置为 CN 时，
-  # Clash 会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
-  #
-  # 当 fallback-filter.geoip 为 false, 如果解析结果不在 fallback-filter.ipcidr 范围内，
-  # Clash 总会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
-  #
-  # 采取以上逻辑进行域名解析是为了对抗 DNS 投毒攻击。
-  fallback-filter:
-    geoip: true
-    ipcidr:
-      - 0.0.0.0/8
-      - 10.0.0.0/8
-      - 100.64.0.0/10
-      - 127.0.0.0/8
-      - 169.254.0.0/16
-      - 172.16.0.0/12
-      - 192.0.0.0/24
-      - 192.0.2.0/24
-      - 192.88.99.0/24
-      - 192.168.0.0/16
-      - 198.18.0.0/15
-      - 198.51.100.0/24
-      - 203.0.113.0/24
-      - 224.0.0.0/4
-      - 240.0.0.0/4
-      - 255.255.255.255/32
-    domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-      - '+.githubusercontent.com'
-      - '+.googlevideo.com'
-
-proxy-providers:
-  #全部节点
-  All:
-    type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
-    # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可；也可以将Clash订阅链接替换掉整个引号""内的链接
-    interval: 3600
-    path: ./all.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-  #香港节点
-  HK:
-    type: file
-    path: ./all.yaml
-    filter: 港|HK|(?i)Hong
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
- #日本节点
-  JP:
-    type: file
-    path: ./all.yaml
-    filter: 日|东京|JP|(?i)Japan
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
- #美国节点
-  US:
-    type: file
-    path: ./all.yaml
-    filter: 美|US|(?i)States|American
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
- #台湾节点
-  TW:
-    type: file
-    path: ./all.yaml
-    filter: 台|湾|TW|(?i)Taiwan
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-
+  enable: true
+  # IPV6解析开关；如果为false，将返回ipv6结果为空
+  ipv6: false
+  # 模式：redir-host或fake-ip
+  enhanced-mode: fake-ip
+  # DNS监听地址
+  listen: :1053
+  # Fake-IP解析地址池
+  fake-ip-range: 198.18.0.1/16
+  # fakeip 过滤，以下地址不会下发 fakeip 映射用于连接
+  fake-ip-filter: ['*.lan','*.direct', cable.auth.com, '*.msftconnecttest.com', '*.msftncsi.com', network-test.debian.org, detectportal.firefox.com, resolver1.opendns.com, '*.srv.nintendo.net', '*.stun.playstation.net', xbox.*.microsoft.com, '*.xboxlive.com', stun.*, global.turn.twilio.com, global.stun.twilio.com, app.yinxiang.com, injections.adguard.org, local.adguard.org, cable.auth.com, localhost.*.qq.com, localhost.*.weixin.qq.com, '*.logon.battlenet.com.cn', '*.logon.battle.net', '*.blzstatic.cn', music.163.com, '*.music.163.com', '*.126.net', musicapi.taihe.com, music.taihe.com, songsearch.kugou.com, trackercdn.kugou.com, '*.kuwo.cn', api-jooxtt.sanook.com, api.joox.com, joox.com, y.qq.com, '*.y.qq.com', streamoc.music.tc.qq.com, mobileoc.music.tc.qq.com, isure.stream.qqmusic.qq.com, dl.stream.qqmusic.qq.com, aqqmusic.tc.qq.com, amobile.music.tc.qq.com, '*.xiami.com', '*.music.migu.cn', music.migu.cn, proxy.golang.org, '*.mcdn.bilivideo.cn', '*.cmpassport.com', id6.me, open.e.189.cn, mdn.open.wo.cn, opencloud.wostore.cn, auth.wosms.cn, '*.jegotrip.com.cn', '*.icitymobile.mobi', '*.pingan.com.cn', '*.cmbchina.com', '*.10099.com.cn', pool.ntp.org, '*.pool.ntp.org', ntp.*.com, time.*.com, 'ntp?.*.com', 'time?.*.com', time.*.gov, time.*.edu.cn, '*.ntp.org.cn', PDC._msDCS.*.*, DC._msDCS.*.*, GC._msDCS.*.*]
+  #默认的域名解析服务器
+  nameserver: [quic://223.5.5.5, quic://223.6.6.6, https://1.12.12.12/dns-query, https://120.53.53.53/dns-query, https://223.5.5.5/dns-query#h3=true, https://223.6.6.6/dns-query#h3=true]                     
+    
+# 策略组引用相关参数
+pg: &pg {type: select, proxies: [策略选择, ⏱香港延迟优选, ⏱美国延迟优选, ⏱日本延迟优选, ⏱欧洲延迟优选, 🚥香港故障转移, 🚥美国故障转移, 🚥日本故障转移, 🚥欧洲故障转移, DIRECT]}
+# 订阅更新和延迟测试相关参数
+p: &p {type: http, interval: 3600, health-check: {enable: true, url: http://latency-test.skk.moe/endpoint, interval: 60}}
+# 时延优选策略组：选取延迟最低节点
+url-test: &url-test {type: url-test, lazy: true, url: http://latency-test.skk.moe/endpoint, interval: 300, tolerance: 0, include-all: true}
+# 手动选择策略组：手动选择想要的节点/策略组
+select: &select {type: select, include-all: true}
+# 故障回退策略组：策略组将按顺序选择你列表中第一个可用的节点
+fallback: &fallback {type: fallback, lazy: true, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+# 负载均衡策略组：不同的请求将使用不同的代理节点
+load-balance: &load-balance {type: load-balance, lazy: true, strategy: consistent-hashing, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+# classical规则相关
+c: &c {type: http, behavior: classical, format: text, interval: 86400}
+# domain规则相关
+d: &d {type: http, behavior: domain, format: text, interval: 86400}
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, format: text, interval: 86400}
 
 proxies:
 ###############################################################配置分割线
@@ -419,294 +218,128 @@ proxies:
 #   # skip-cert-verify: true
 ###############################################################配置分割线
 
+proxy-providers:
+
+  # Subscribe: {<<: *p, path: ./proxy-providers/Sub.yaml, url: http://your-service-provider}
+    # 在此将"http://your-service-provider"替换为你的机场订阅，推荐使用 base64 或者 node list
+    # Sub-Store生成的链接,可以直接替换上述 url 引号中的部分,具体见 Sub-Store 教程  
+
 proxy-groups:
-  - name: 🚀 手动切换
-    type: select
-    use:
-      - All
-    proxies:
-      - ✈️ 自动选择
 
-  - name: ✈️ 自动选择
-    type: url-test
-    use:
-       - All
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
+  #分流分组
 
-  - name: 🎬 YouTube
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - DIRECT
+  - {name: 策略选择, type: select, include-all: true, proxies: [⏱香港延迟优选, ⏱美国延迟优选, ⏱日本延迟优选, ⏱欧洲延迟优选, 🚥香港故障转移, 🚥美国故障转移, 🚥日本故障转移, 🚥欧洲故障转移, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png}
 
-  - name: 🎬 NETFLIX
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - DIRECT
+  - {name: 国外网站, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png}
 
-  - name: 🎬 Disney+
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - DIRECT
+  - {name: 国际媒体, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Youtube.png}
 
-  - name: 🎬 巴哈姆特
-    type: select
-    proxies:
-      - 🇨🇳 台湾节点
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🚀 手动切换
-      - DIRECT
+  - {name: 苹果服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png}
 
-  - name: 🆎 AdBlock
-    type: select
-    proxies:
-      - REJECT
-      - 🚀 手动切换
+  - {name: 微软服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
 
-  - name: 🌏 国外网站
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - DIRECT
+  - {name: 谷歌服务, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png}
 
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
+  - {name: 电报消息, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png}
 
-  - name: 🧩 微软服务
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
+  - {name: 推特消息, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png}
 
-  - name: 🎶 网易音乐
-    type: select
-    proxies:
-      - DIRECT
+  - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png}
 
-  - name: 🎬 哔哩哔哩
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
+  - {name: 游戏平台, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png}
 
-  - name: 🎮 游戏平台
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - DIRECT
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
+  - {name: Emby, <<: *pg, include-all: true, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
 
-  - name: 🌏 国内网站
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 手动切换
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
+  - {name: 广告拦截, type: select, proxies: [REJECT, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png}
 
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🚀 手动切换
-      - DIRECT
-      - ✈️ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-  - name: 🇭🇰 香港节点
-    type: select
-    use:
-      - HK
-    proxies:
-      - DIRECT
-  - name: 🇯🇵 日本节点
-    type: select
-    use:
-      - JP
-    proxies:
-      - DIRECT
-  - name: 🇨🇳 台湾节点
-    type: select
-    use:
-      - TW
-    proxies:
-      - DIRECT
-  - name: 🇺🇲 美国节点
-    type: select
-    use:
-      - US
-    proxies:
-      - DIRECT
+  - {name: 兜底分流, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color//Final.png}
+
+  #节点地区分组
+
+  - {name: ⏱香港延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: ⏱美国延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: ⏱日本延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  - {name: ⏱欧洲延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
+  - {name: 🚥香港故障转移, <<: *fallback, filter: "(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: 🚥美国故障转移, <<: *fallback, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: 🚥日本故障转移, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  - {name: 🚥欧洲故障转移, <<: *fallback, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
 
 rule-providers:
 
-  Direct:
-    type: http
-    behavior: classical
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml"
-    path: ./ruleset/direct.yaml
-    interval: 86400
+  # 局域网   
+  Lan: {<<: *c, path: ./rule-providers/Lan.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list}
 
-  adblock:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising_Classical.yaml"
-    path: ./ruleset/Advertising_Classical.yaml
-    interval: 86400
+  # 下载服务
+  Download: {<<: *c, path: ./rule-providers/Download.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Download.list}
+      
+  #广告拦截
+  AD: {<<: *c, path: ./rule-providers/AD.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list}
 
-  YouTube:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml"
-    path: ./ruleset/YouTube.yaml
-    interval: 86400
+  # 苹果服务
+  Apple: {<<: *c, path: ./rule-providers/Apple.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list}
 
-  Netflix:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Netflix/Netflix.yaml"
-    path: ./ruleset/Netflix.yaml
-    interval: 86400
+  # 微软服务 
+  OneDrive: {<<: *c, path: ./rule-providers/OneDrive.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list}
+  Github: {<<: *c, path: ./rule-providers/Github.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list}
+  Microsoft: {<<: *c, path: ./rule-providers/Microsoft.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Microsoft.list}
 
-  Disney:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml"
-    path: ./ruleset/Disney.yaml
-    interval: 86400
+  # 谷歌服务
+  YouTube: {<<: *c, path: ./rule-providers/YouTube.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list}
+  Google: {<<: *c, path: ./rule-providers/Google.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list}
 
-  Bahamut:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bahamut/Bahamut.yaml"
-    path: ./ruleset/Bahamut.yaml
-    interval: 86400
+  # 电报消息
+  Telegram: {<<: *c, path: ./rule-providers/Telegram.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list}
 
-  Apple:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml"
-    path: ./ruleset/Apple.yaml
-    interval: 86400
+  # 推特消息
+  Twitter: {<<: *c, path: ./rule-providers/Twitter.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list}
 
-  NetEaseMusic:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml"
-    path: ./ruleset/NetEaseMusic.yaml
-    interval: 86400
+  # 游戏平台
+  Steam: {<<: *c, path: ./rule-providers/steam.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list}
+  Epic: {<<: *c, path: ./rule-providers/Epic.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list}
 
-  Microsoft:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml"
-    path: ./ruleset/Microsoft.yaml
-    interval: 86400
+  # AI平台
+  AI: {<<: *c, path: ./rule-providers/AI.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list}
 
-  BiliBili:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml"
-    path: ./ruleset/BiliBili.yaml
-    interval: 86400
+  # 中国大陆
+  ChinaDomain: {<<: *c, path: ./rule-providers/ChinaDomain.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ChinaDomain.list}
 
-  Game:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml"
-    path: ./ruleset/Game.yaml
-    interval: 86400
+  # Emby
+  Emby: {<<: *c, path: ./rule-providers/Emby.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list}
 
-  China:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/China/China.yaml"
-    path: ./ruleset/China.yaml
-    interval: 86400
+  # 国际媒体
+  ProxyMedia: {<<: *c, path: ./rule-providers/ProxyMedia.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ProxyMedia.list}
 
-  Global_Classical:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Global/Global_Classical.yaml"
-    path: ./ruleset/Global_Classical.yaml
-    interval: 86400
-
-
-
+  # 代理网站
+  ProxyGFW: {<<: *c, path: ./rule-providers/ProxyGFW.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ProxyGFW.list}
+ 
 rules:
-  - RULE-SET,Direct,DIRECT
-  - RULE-SET,adblock,🆎 AdBlock
-  - RULE-SET,YouTube,🎬 YouTube
-  - RULE-SET,Netflix,🎬 NETFLIX
-  - RULE-SET,Disney,🎬 Disney+
-  - RULE-SET,Bahamut,🎬 巴哈姆特
-  - RULE-SET,Apple,🍎 苹果服务
-  - RULE-SET,Microsoft,🧩 微软服务
-  - RULE-SET,NetEaseMusic,🎶 网易音乐
-  - RULE-SET,BiliBili,🎬 哔哩哔哩
-  - RULE-SET,Game,🎮 游戏平台
-  - RULE-SET,Global_Classical,🌏 国外网站
-  - RULE-SET,China,🌏 国内网站
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-  - IP-CIDR,224.0.0.0/4,DIRECT
-  - IP-CIDR,fe80::/10,DIRECT
-  - IP-CIDR,119.28.28.28/32,DIRECT
-  - IP-CIDR,182.254.116.0/24,DIRECT
-  - GEOIP,CN,🌏 国内网站
-  - MATCH,🐟 漏网之鱼
+  #- SCRIPT,quic,REJECT
+  #- RULE-SET,Download,DIRECT
+  - RULE-SET,AD,广告拦截
+  - RULE-SET,AI,AI
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,OneDrive,微软服务
+  - RULE-SET,Github,微软服务
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,YouTube,谷歌服务
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Telegram,电报消息
+  - RULE-SET,Twitter,推特消息
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Emby,Emby
+  - RULE-SET,ProxyMedia,国际媒体
+  - RULE-SET,ProxyGFW,国外网站
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,Lan,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,兜底分流
