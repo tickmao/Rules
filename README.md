@@ -14,7 +14,7 @@
 
 * Clash for windows 配置：[tickmao.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Clash/tickmao.yml)
 
-* Shadowrocket 配置:[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf)
+* Shadowrocket 配置: [tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf)
 
 ## 参与我们
 
@@ -24,4 +24,4 @@
 
 Pac ©[Tickmao](https://blog.tickmao.com), Released under the MIT License.
 
-Blog @[Tickmao](https://blog.tickmao.com) · GitHub @[Tickmao](https://github.com/tickmao) · Twitter @[Tickmao](https://twitter.com/tickmao)· TG @[mwkds](https://t.me/mwkds)
+Blog @[Tickmao](https://blog.tickmao.com) · GitHub @[Tickmao](https://github.com/tickmao) · Twitter @[Tickmao](https://twitter.com/tickmao) · TG @[mwkds](https://t.me/mwkds)
