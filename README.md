@@ -6,9 +6,9 @@
 
 * QuantumultX 配置：[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/QuantumultX/tickmao.conf)
 
-* Surge[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Surge/tickmao.conf)
+* Surge配置：[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Surge/tickmao.conf)
 
-* Loon[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Loon/tickmao.conf)
+* Loon配置：[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Loon/tickmao.conf)
 
 * Clash Verge rev 配置：[tickmao-pro.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml)
 
