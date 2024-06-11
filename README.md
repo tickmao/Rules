@@ -6,7 +6,15 @@
 
 * QuantumultX 配置：
 
-  [https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf](https://github.com/tickmao/Rules/blob/master/Quantumult%20X/QuantumultX.conf)
+  [https://github.com/tickmao/Rules/blob/master/QuantumultX/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Quantumult/tickmao.conf)
+
+* Surge
+
+  [https://github.com/tickmao/Rules/blob/master/Surge/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Surge/tickmao.conf)
+
+* Loon
+
+  [https://github.com/tickmao/Rules/blob/master/Loon/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Loon/tickmao.conf)
 
 * Clash Verge rev 配置：
 
@@ -18,7 +26,7 @@
 
 * Shadowrocket 配置:
 
-  [https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/Shadowrocket-Rules.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/Shadowrocket-Rules.conf)
+  [https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf)
 
 ## 参与我们
 
