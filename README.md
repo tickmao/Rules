@@ -4,29 +4,17 @@
 
 ## 各平台配置
 
-* QuantumultX 配置：
+* QuantumultX 配置：[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/QuantumultX/tickmao.conf)
 
-  [https://github.com/tickmao/Rules/blob/master/QuantumultX/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Quantumult/tickmao.conf)
+* Surge[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Surge/tickmao.conf)
 
-* Surge
+* Loon[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Loon/tickmao.conf)
 
-  [https://github.com/tickmao/Rules/blob/master/Surge/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Surge/tickmao.conf)
+* Clash Verge rev 配置：[tickmao-pro.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml)
 
-* Loon
+* Clash for windows 配置：[tickmao.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Clash/tickmao.yml)
 
-  [https://github.com/tickmao/Rules/blob/master/Loon/tickmao.conf](https://github.com/tickmao/Rules/blob/master/Loon/tickmao.conf)
-
-* Clash Verge rev 配置：
-
-  [https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/ClashPro/tickmao-pro.yml)
-
-* Clash for windows 配置：
-
-  [https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Clash/tickmao.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Clash/tickmao.yml)
-
-* Shadowrocket 配置:
-
-  [https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf)
+* Shadowrocket 配置:[tickmao.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/tickmao.conf)
 
 ## 参与我们
 
