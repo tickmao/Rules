@@ -260,7 +260,7 @@ proxy-groups:
 
   - {name: ⏱美国延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
 
-  - {name: ⏱日本延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+  - {name: ⏱日本延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
 
   - {name: ⏱欧洲延迟优选, <<: *url-test, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
 
@@ -268,29 +268,18 @@ proxy-groups:
 
   - {name: 🚥美国故障转移, <<: *fallback, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
 
-  - {name: 🚥日本故障转移, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+  - {name: 🚥日本故障转移, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
 
   - {name: 🚥欧洲故障转移, <<: *fallback, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
 
 
 rule-providers:
 
-  # 局域网   
-  Lan: {<<: *c, path: ./rule-providers/Lan.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list}
-
-  # 下载服务
-  Download: {<<: *c, path: ./rule-providers/Download.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Download.list}
-      
   #广告拦截
   AD: {<<: *c, path: ./rule-providers/AD.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list}
 
   # 苹果服务
   Apple: {<<: *c, path: ./rule-providers/Apple.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list}
-
-  # 微软服务 
-  OneDrive: {<<: *c, path: ./rule-providers/OneDrive.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list}
-  Github: {<<: *c, path: ./rule-providers/Github.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list}
-  Microsoft: {<<: *c, path: ./rule-providers/Microsoft.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Microsoft.list}
 
   # 谷歌服务
   YouTube: {<<: *c, path: ./rule-providers/YouTube.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list}
@@ -309,27 +298,21 @@ rule-providers:
   # AI平台
   AI: {<<: *c, path: ./rule-providers/AI.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list}
 
-  # 中国大陆
-  ChinaDomain: {<<: *c, path: ./rule-providers/ChinaDomain.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ChinaDomain.list}
-
   # Emby
   Emby: {<<: *c, path: ./rule-providers/Emby.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list}
 
   # 国际媒体
-  ProxyMedia: {<<: *c, path: ./rule-providers/ProxyMedia.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ProxyMedia.list}
+  Spotify: {<<: *c, path: ./rule-providers/Spotify.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/Spotify.list}
+  Bahamut: {<<: *c, path: ./rule-providers/Bahamut.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/Bahamut.list}
+  Netflix: {<<: *c, path: ./rule-providers/Netflix.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/Netflix.list}
+  Disney: {<<: *c, path: ./rule-providers/Disney.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/Disney.list}
+  PrimeVideo: {<<: *c, path: ./rule-providers/PrimeVideo.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/PrimeVideo.list}
+  HBO: {<<: *c, path: ./rule-providers/HBO.list,  url: https://github.com/Repcz/Tool/raw/X/Surge/Rules/HBO.list}
 
-  # 代理网站
-  ProxyGFW: {<<: *c, path: ./rule-providers/ProxyGFW.list,  url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/ProxyGFW.list}
- 
 rules:
-  #- SCRIPT,quic,REJECT
-  #- RULE-SET,Download,DIRECT
   - RULE-SET,AD,广告拦截
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
-  - RULE-SET,OneDrive,微软服务
-  - RULE-SET,Github,微软服务
-  - RULE-SET,Microsoft,微软服务
   - RULE-SET,YouTube,谷歌服务
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Telegram,电报消息
@@ -337,9 +320,17 @@ rules:
   - RULE-SET,Steam,游戏平台
   - RULE-SET,Epic,游戏平台
   - RULE-SET,Emby,Emby
-  - RULE-SET,ProxyMedia,国际媒体
-  - RULE-SET,ProxyGFW,国外网站
-  - RULE-SET,ChinaDomain,DIRECT
-  - RULE-SET,Lan,DIRECT
+  - RULE-SET,Spotify,国际媒体
+  - RULE-SET,Bahamut,国际媒体
+  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,Disney,国际媒体
+  - RULE-SET,PrimeVideo,国际媒体
+  - RULE-SET,HBO,国际媒体
+  - GEOSITE,onedrive,微软服务
+  - GEOSITE,github,微软服务
+  - GEOSITE,microsoft,微软服务
+  - GEOSITE,gfw,国外网站
+  - GEOSITE,cn,DIRECT
+  - GEOIP,lan,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
