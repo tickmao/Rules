@@ -1,0 +1,342 @@
+###############################################################
+# @ConfigName        Tickmao自用的Clash Verge Rev配置文件
+# @Author            Tickmao
+# @Feedback          ✉️请通过邮件反馈问题：lyle.lypm@gmail.com 
+# @UpdateTime        ⏱2024/06/10 12:00 UTC/GMT +8
+# @Function          💡请参考对应的注释或Tag，深度使用可参考对应说明：https://repcz.github.io/proxytool/
+# @Function          注释符号，去掉此类#/;符号，该行才会生效
+# @Config            欢迎访问本人的小破站： https://tickmao.com/
+# @Tg                TG:https://t.me/mwkds
+# @ConfigURL         https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Clash.yml
+# @Tips              💬本项目涉及的脚本仅用于资源共享和学习研究，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断，特别感谢相应作者的无私贡献。本项目的任何内容不得用于商业或非法目的，否则后果自负。一旦使用并复制了该项目的任何文件，则视为您已接受此免责声明。
+###############################################################
+# 混合端口 HTTP和SOCKS5用一个端口
+mixed-port: 7890
+# TCP 并发连接所有 IP, 将使用最快握手的 TCP
+tcp-concurrent: true
+# 允许局域网的连接（可用来共享代理）
+allow-lan: true
+# 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录  
+ipv6: false
+# 规则模式：rule/global/direct/script
+mode: rule
+# 设置日志输出级别: silent/error/warning/info/debug
+log-level: info
+# 全局 TLS 指纹
+global-client-fingerprint: chrome
+# 匹配所有进程（always/strict/off）
+find-process-mode: strict
+
+# 使用geoip.dat数据库
+geodata-mode: true
+geox-url:
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: 'https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb'
+                         
+profile:
+  # 存储 select 选择记录
+  store-selected: true 
+  # 持久化 fake-ip
+  store-fake-ip: true  
+
+# 嗅探域名 可选配置
+sniffer:               
+  enable: true
+  # 是否使用嗅探结果作为实际访问，默认 true
+  parse-pure-ip: true  
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
+
+# Tun 配置  
+tun:
+  enable: true
+  # 可选： system/gvisor/mixed；
+  stack: mixed
+  # dns劫持,一般设置为 any:53 即可, 即劫持所有53端口的udp流量
+  dns-hijack: [any:53]
+  # 自动设置全局路由，可以自动将全局流量路由进入tun网卡。
+  auto-route: true
+  # 自动识别出口网卡
+  auto-detect-interface: true
+        
+dns:
+  enable: true
+  # IPV6解析开关；如果为false，将返回ipv6结果为空
+  ipv6: false
+  # 模式：redir-host或fake-ip
+  enhanced-mode: fake-ip
+  # DNS监听地址
+  listen: :1053
+  # Fake-IP解析地址池
+  fake-ip-range: 198.18.0.1/16
+  # fakeip 过滤，以下地址不会下发 fakeip 映射用于连接
+  fake-ip-filter: ['*.lan','*.direct', cable.auth.com, '*.msftconnecttest.com', '*.msftncsi.com', network-test.debian.org, detectportal.firefox.com, resolver1.opendns.com, '*.srv.nintendo.net', '*.stun.playstation.net', xbox.*.microsoft.com, '*.xboxlive.com', stun.*, global.turn.twilio.com, global.stun.twilio.com, app.yinxiang.com, injections.adguard.org, local.adguard.org, cable.auth.com, localhost.*.qq.com, localhost.*.weixin.qq.com, '*.logon.battlenet.com.cn', '*.logon.battle.net', '*.blzstatic.cn', music.163.com, '*.music.163.com', '*.126.net', musicapi.taihe.com, music.taihe.com, songsearch.kugou.com, trackercdn.kugou.com, '*.kuwo.cn', api-jooxtt.sanook.com, api.joox.com, joox.com, y.qq.com, '*.y.qq.com', streamoc.music.tc.qq.com, mobileoc.music.tc.qq.com, isure.stream.qqmusic.qq.com, dl.stream.qqmusic.qq.com, aqqmusic.tc.qq.com, amobile.music.tc.qq.com, '*.xiami.com', '*.music.migu.cn', music.migu.cn, proxy.golang.org, '*.mcdn.bilivideo.cn', '*.cmpassport.com', id6.me, open.e.189.cn, mdn.open.wo.cn, opencloud.wostore.cn, auth.wosms.cn, '*.jegotrip.com.cn', '*.icitymobile.mobi', '*.pingan.com.cn', '*.cmbchina.com', '*.10099.com.cn', pool.ntp.org, '*.pool.ntp.org', ntp.*.com, time.*.com, 'ntp?.*.com', 'time?.*.com', time.*.gov, time.*.edu.cn, '*.ntp.org.cn', PDC._msDCS.*.*, DC._msDCS.*.*, GC._msDCS.*.*]
+  #默认的域名解析服务器
+  nameserver: [quic://223.5.5.5, quic://223.6.6.6, https://1.12.12.12/dns-query, https://120.53.53.53/dns-query, https://223.5.5.5/dns-query#h3=true, https://223.6.6.6/dns-query#h3=true]                     
+    
+# 策略组引用相关参数
+pg: &pg {type: select, proxies: [Proxy, Hong Kong, United States, Japan, Europe, Hong Kong Fallback, United States Fallback, Japan Fallback, Europe Fallback, DIRECT]}
+# 订阅更新和延迟测试相关参数
+p: &p {type: http, interval: 3600, health-check: {enable: true, url: http://latency-test.skk.moe/endpoint, interval: 60}}
+# 时延优选策略组：选取延迟最低节点
+url-test: &url-test {type: url-test, lazy: true, url: http://latency-test.skk.moe/endpoint, interval: 300, tolerance: 0, include-all: true}
+# 手动选择策略组：手动选择想要的节点/策略组
+select: &select {type: select, include-all: true}
+# 故障回退策略组：策略组将按顺序选择你列表中第一个可用的节点
+fallback: &fallback {type: fallback, lazy: true, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+# 负载均衡策略组：不同的请求将使用不同的代理节点
+load-balance: &load-balance {type: load-balance, lazy: true, strategy: consistent-hashing, url: http://latency-test.skk.moe/endpoint, interval: 300, include-all: true}
+# classical规则相关
+c: &c {type: http, behavior: classical, format: text, interval: 86400}
+# domain规则相关
+d: &d {type: http, behavior: domain, format: text, interval: 86400}
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, format: text, interval: 86400}
+
+proxies:
+###############################################################配置分割线
+# shadowsocks
+# 所支持的加密方式与 go-shadowsocks2 保持一致
+# 支持加密方式：
+#   aes-128-gcm aes-192-gcm aes-256-gcm
+#   aes-128-cfb aes-192-cfb aes-256-cfb
+#   aes-128-ctr aes-192-ctr aes-256-ctr
+#   rc4-md5 chacha20-ietf xchacha20
+#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+
+# Shadowsocks
+# 第一种配置
+#- name: "你的SS节点1"               # 软件显示的节点名字
+#  type: ss                                  # 代理类型
+#  server: 1.2.4.8                          # 服务器 IP
+#  port: 443                                 #  端口号
+#  cipher: chacha20-ietf-poly1305   # 加密方法
+#  password: "password"                # SS 密码
+#  # udp: true                                #默认不开启
+
+# Shadowsocks + simple-obfs
+# 第二种配置
+#- name: "你的SS节点2"               # 软件显示的节点名字
+#  type: ss                                  # 代理类型
+#  server: 1.2.4.8                          # 服务器 IP
+#  port: 443                                 #  端口号
+#  cipher: chacha20-ietf-poly1305   # 加密方法
+#  password: "password"                # SS 密码
+#  plugin: obfs
+#  plugin-opts:
+#    mode: tls # or http               #  大部分选择 HTTP
+#  #  host: bing.com                  #  伪装
+
+# Shadowsocks + v2ray-plugin
+# 第三种配置
+# - name: "你的SS节点3"
+#   type: ss
+#   server: 1.2.4.8
+#   port: 443
+#   cipher: chacha20-ietf-poly1305
+#   password: "password"
+#   plugin: v2ray-plugin
+#   plugin-opts:
+#     mode: websocket # no QUIC now
+#     # tls: true # wss
+#     # skip-cert-verify: true
+#     # host: bing.com
+#     # path: "/"
+#     # mux: true
+#     # headers:
+#     #   custom: value
+
+# vmess
+# 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
+# - name: "vmess"
+#   type: vmess
+#   server: server
+#   port: 443
+#   uuid: uuid
+#   alterId: 32
+#   cipher: auto
+#   udp: true
+#   tls: true
+#   skip-cert-verify: true
+#   network: ws
+#   ws-path: /path
+#   ws-headers:
+#     Host: v2ray.com
+
+# socks5
+# - name: "socks"
+#   type: socks5
+#   server: server
+#   port: 443
+#   username: username
+#   password: password
+#   tls: true
+#   skip-cert-verify: true
+#   udp: true
+
+# http
+# - name: "http"
+#   type: http
+#   server: server
+#   port: 443
+#   username: username
+#   password: password
+#   tls: true # https
+#   skip-cert-verify: true
+
+# snell
+# - name: "snell"
+#   type: snell
+#   server: server
+#   port: 44046
+#   psk: yourpsk
+#   obfs-opts:
+  #   mode: http # 或 tls
+  #   host: bing.com
+
+# Trojan的配置
+# - name: "trojan"
+#   type: trojan
+#   server: server
+#   port: 443
+#   password: password
+#   #上面几行为必选参数
+#   #下面几行为可选参数  根据你的配置情况来
+#   # udp: true
+#   # sni: example.com # aka server name
+#   # alpn:
+#   #   - h2
+#   #   - http/1.1
+#   # skip-cert-verify: true
+###############################################################配置分割线
+
+proxy-providers:
+
+  # Subscribe: {<<: *p, path: ./proxy-providers/Sub.yaml, url: http://your-service-provider}
+    # 在此将"http://your-service-provider"替换为你的机场订阅，推荐使用 base64 或者 node list
+    # Sub-Store生成的链接,可以直接替换上述 url 引号中的部分,具体见 Sub-Store 教程  
+
+proxy-groups:
+
+  #分流分组
+
+  - {name: Proxy, type: select, include-all: true, proxies: [Hong Kong, United States, Japan, Europe, Hong Kong Fallback, United States Fallback, Japan Fallback, Europe Fallback, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png}
+
+  - {name: Outside, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png}
+
+  - {name: Gmedia, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Streaming.png}
+
+  - {name: Apple, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png}
+
+  - {name: Microsoft, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png}
+
+  - {name: Google, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png}
+
+  - {name: Telegram, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png}
+
+  - {name: Social, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png}
+
+  - {name: AI, <<: *pg, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png}
+
+  - {name: Game, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png}
+
+  - {name: Emby, <<: *pg, include-all: true, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
+
+  - {name: Reject, type: select, proxies: [REJECT, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png}
+
+  - {name: NoAuto, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color//Final.png}
+
+  #节点地区分组
+
+  - {name: Hong Kong, <<: *url-test, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: United States, <<: *url-test, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: Japan, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  - {name: Europe, <<: *url-test, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
+  - {name: Hong Kong Fallback, <<: *fallback, filter: "(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: United States Fallback, <<: *fallback, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: Japan Fallback, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  - {name: Europe Fallback, <<: *fallback, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
+
+rule-providers:
+# >>> AUTO-GENERATED CORE START >>> rule-providers
+  Direct: {<<: *c, path: ./rule-providers/Direct.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Direct.list}
+  Ads_SukkaW: {<<: *c, path: ./rule-providers/Ads_SukkaW.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Ads_SukkaW.list}
+  Reject: {<<: *c, path: ./rule-providers/Reject.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Reject.list}
+  AI: {<<: *c, path: ./rule-providers/AI.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/AI.list}
+  PayPal: {<<: *c, path: ./rule-providers/PayPal.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/PayPal.list}
+  Netflix: {<<: *c, path: ./rule-providers/Netflix.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Netflix.list}
+  Telegram: {<<: *c, path: ./rule-providers/Telegram.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Telegram.list}
+  Twitter: {<<: *c, path: ./rule-providers/Twitter.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Twitter.list}
+  Instagram: {<<: *c, path: ./rule-providers/Instagram.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Instagram.list}
+  TikTok: {<<: *c, path: ./rule-providers/TikTok.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/TikTok.list}
+  Steam: {<<: *c, path: ./rule-providers/Steam.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Steam.list}
+  Epic: {<<: *c, path: ./rule-providers/Epic.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Epic.list}
+  YouTube: {<<: *c, path: ./rule-providers/YouTube.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/YouTube.list}
+  Google: {<<: *c, path: ./rule-providers/Google.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Google.list}
+  Github: {<<: *c, path: ./rule-providers/Github.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Github.list}
+  OneDrive: {<<: *c, path: ./rule-providers/OneDrive.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/OneDrive.list}
+  Microsoft: {<<: *c, path: ./rule-providers/Microsoft.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Microsoft.list}
+  Emby: {<<: *c, path: ./rule-providers/Emby.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Emby.list}
+  Spotify: {<<: *c, path: ./rule-providers/Spotify.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Spotify.list}
+  Bahamut: {<<: *c, path: ./rule-providers/Bahamut.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Bahamut.list}
+  Disney: {<<: *c, path: ./rule-providers/Disney.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Disney.list}
+  PrimeVideo: {<<: *c, path: ./rule-providers/PrimeVideo.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/PrimeVideo.list}
+  HBO: {<<: *c, path: ./rule-providers/HBO.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/HBO.list}
+  Proxy: {<<: *c, path: ./rule-providers/Proxy.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/Proxy.list}
+  AppleCN: {<<: *c, path: ./rule-providers/AppleCN.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/AppleCN.list}
+  AppleServers: {<<: *c, path: ./rule-providers/AppleServers.list,  url: https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Rules/AppleServers.list}
+# <<< AUTO-GENERATED CORE END <<< rule-providers
+
+rules:
+# >>> AUTO-GENERATED CORE START >>> rules
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,Ads_SukkaW,Reject
+  - RULE-SET,Reject,Reject
+  - RULE-SET,AI,AI
+  - RULE-SET,PayPal,Outside
+  - RULE-SET,Netflix,Gmedia
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,Twitter,Social
+  - RULE-SET,Instagram,Social
+  - RULE-SET,TikTok,Gmedia
+  - RULE-SET,Steam,Game
+  - RULE-SET,Epic,Game
+  - RULE-SET,YouTube,Google
+  - RULE-SET,Google,Google
+  - RULE-SET,Github,Microsoft
+  - RULE-SET,OneDrive,Microsoft
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,Emby,Emby
+  - RULE-SET,Spotify,Gmedia
+  - RULE-SET,Bahamut,Gmedia
+  - RULE-SET,Disney,Gmedia
+  - RULE-SET,PrimeVideo,Gmedia
+  - RULE-SET,HBO,Gmedia
+  - RULE-SET,Proxy,Outside
+  - RULE-SET,AppleCN,DIRECT
+  - RULE-SET,AppleServers,Apple
+  - GEOSITE,onedrive,Microsoft
+  - GEOSITE,github,Microsoft
+  - GEOSITE,microsoft,Microsoft
+  - GEOSITE,gfw,Outside
+  - GEOSITE,cn,DIRECT
+  - GEOIP,lan,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,NoAuto
+# <<< AUTO-GENERATED CORE END <<< rules
