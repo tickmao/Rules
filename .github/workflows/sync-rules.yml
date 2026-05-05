@@ -1,0 +1,30 @@
+name: Sync Rules from Upstream
+
+on:
+  schedule:
+    # 每天北京时间 12:00 同步 (UTC 04:00)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  sync-rules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Make sync script executable
+        run: chmod +x scripts/sync_rules.sh
+
+      - name: Run rules sync
+        run: bash scripts/sync_rules.sh
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: daily rule sync"
+          branch: master
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>

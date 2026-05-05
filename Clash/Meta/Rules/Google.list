@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:55:37 CST
+# @LocalPath   Clash/Meta/Rules/Google.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR,74.125.0.0/16,no-resolve

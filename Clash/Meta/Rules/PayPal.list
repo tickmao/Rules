@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    blackmatrix7
+# @SyncTime    2026-04-20 20:55:37 CST
+# @LocalPath   Clash/Meta/Rules/PayPal.list
+# @Maintainer  tickmao
+# ============================================
+DOMAIN-KEYWORD,paypal

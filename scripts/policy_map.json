@@ -1,0 +1,339 @@
+{
+  "marker_start": "# >>> AUTO-GENERATED CORE START >>>",
+  "marker_end": "# <<< AUTO-GENERATED CORE END <<<",
+  "report_path": "reports/sync_report.md",
+  "qx_default_interval": 172800,
+  "rules": [
+    {
+      "key": "Direct",
+      "file": "Direct.list",
+      "tag": "Direct",
+      "targets": {
+        "surge": "Mainland",
+        "loon": "DIRECT",
+        "qx": "direct",
+        "shadowrocket": "Mainland",
+        "clash": "DIRECT"
+      }
+    },
+    {
+      "key": "Ads_SukkaW",
+      "file": "Ads_SukkaW.list",
+      "tag": "Ads",
+      "targets": {
+        "surge": "REJECT",
+        "loon": "REJECT",
+        "qx": "reject",
+        "shadowrocket": "REJECT",
+        "clash": "Reject"
+      }
+    },
+    {
+      "key": "Reject",
+      "file": "Reject.list",
+      "tag": "Reject",
+      "targets": {
+        "surge": "REJECT",
+        "loon": "REJECT",
+        "qx": "reject",
+        "shadowrocket": "REJECT",
+        "clash": "Reject"
+      }
+    },
+    {
+      "key": "AI",
+      "file": "AI.list",
+      "tag": "AI",
+      "targets": {
+        "surge": "AI",
+        "loon": "AI",
+        "qx": "AI",
+        "shadowrocket": "AI",
+        "clash": "AI"
+      }
+    },
+    {
+      "key": "PayPal",
+      "file": "PayPal.list",
+      "tag": "PayPal",
+      "qx_interval": 43200,
+      "targets": {
+        "surge": "PayPal",
+        "loon": "PayPal",
+        "qx": "PayPal",
+        "shadowrocket": "PayPal",
+        "clash": "Outside"
+      }
+    },
+    {
+      "key": "Netflix",
+      "file": "Netflix.list",
+      "tag": "Netflix",
+      "targets": {
+        "surge": "Netflix",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "Telegram",
+      "file": "Telegram.list",
+      "tag": "Telegram",
+      "targets": {
+        "surge": "Telegram",
+        "loon": "Telegram",
+        "qx": "Telegram",
+        "shadowrocket": "Telegram",
+        "clash": "Telegram"
+      }
+    },
+    {
+      "key": "Twitter",
+      "file": "Twitter.list",
+      "tag": "Twitter",
+      "targets": {
+        "surge": "Social",
+        "loon": "Social",
+        "qx": "Social",
+        "shadowrocket": "Social",
+        "clash": "Social"
+      }
+    },
+    {
+      "key": "Instagram",
+      "file": "Instagram.list",
+      "tag": "Instagram",
+      "targets": {
+        "surge": "Social",
+        "loon": "Social",
+        "qx": "Social",
+        "shadowrocket": "Social",
+        "clash": "Social"
+      }
+    },
+    {
+      "key": "TikTok",
+      "file": "TikTok.list",
+      "tag": "TikTok",
+      "targets": {
+        "surge": "Social",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "Steam",
+      "file": "Steam.list",
+      "tag": "Steam",
+      "targets": {
+        "surge": "Game",
+        "loon": "Game",
+        "qx": "Game",
+        "shadowrocket": "Game",
+        "clash": "Game"
+      }
+    },
+    {
+      "key": "Epic",
+      "file": "Epic.list",
+      "tag": "Epic",
+      "targets": {
+        "surge": "Game",
+        "loon": "Game",
+        "qx": "Game",
+        "shadowrocket": "Game",
+        "clash": "Game"
+      }
+    },
+    {
+      "key": "YouTube",
+      "file": "YouTube.list",
+      "tag": "YouTube",
+      "targets": {
+        "surge": "Google",
+        "loon": "Google",
+        "qx": "Google",
+        "shadowrocket": "Google",
+        "clash": "Google"
+      }
+    },
+    {
+      "key": "Google",
+      "file": "Google.list",
+      "tag": "Google",
+      "targets": {
+        "surge": "Google",
+        "loon": "Google",
+        "qx": "Google",
+        "shadowrocket": "Google",
+        "clash": "Google"
+      }
+    },
+    {
+      "key": "Github",
+      "file": "Github.list",
+      "tag": "Github",
+      "targets": {
+        "surge": "Microsoft",
+        "loon": "Microsoft",
+        "qx": "Microsoft",
+        "shadowrocket": "Microsoft",
+        "clash": "Microsoft"
+      }
+    },
+    {
+      "key": "OneDrive",
+      "file": "OneDrive.list",
+      "tag": "OneDrive",
+      "targets": {
+        "surge": "Microsoft",
+        "loon": "Microsoft",
+        "qx": "Microsoft",
+        "shadowrocket": "Microsoft",
+        "clash": "Microsoft"
+      }
+    },
+    {
+      "key": "Microsoft",
+      "file": "Microsoft.list",
+      "tag": "Microsoft",
+      "targets": {
+        "surge": "Microsoft",
+        "loon": "Microsoft",
+        "qx": "Microsoft",
+        "shadowrocket": "Microsoft",
+        "clash": "Microsoft"
+      }
+    },
+    {
+      "key": "Emby",
+      "file": "Emby.list",
+      "tag": "Emby",
+      "targets": {
+        "surge": "Emby",
+        "loon": "Emby",
+        "qx": "Emby",
+        "shadowrocket": "Emby",
+        "clash": "Emby"
+      }
+    },
+    {
+      "key": "Spotify",
+      "file": "Spotify.list",
+      "tag": "Spotify",
+      "targets": {
+        "surge": "Spotify",
+        "loon": "Spotify",
+        "qx": "Spotify",
+        "shadowrocket": "Spotify",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "Bahamut",
+      "file": "Bahamut.list",
+      "tag": "Bahamut",
+      "targets": {
+        "surge": "Gmedia",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "Disney",
+      "file": "Disney.list",
+      "tag": "Disney",
+      "targets": {
+        "surge": "Gmedia",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "PrimeVideo",
+      "file": "PrimeVideo.list",
+      "tag": "PrimeVideo",
+      "targets": {
+        "surge": "Gmedia",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "HBO",
+      "file": "HBO.list",
+      "tag": "HBO",
+      "targets": {
+        "surge": "Gmedia",
+        "loon": "Gmedia",
+        "qx": "Gmedia",
+        "shadowrocket": "Gmedia",
+        "clash": "Gmedia"
+      }
+    },
+    {
+      "key": "Proxy",
+      "file": "Proxy.list",
+      "tag": "Proxy",
+      "targets": {
+        "surge": "Outside",
+        "loon": "Outside",
+        "qx": "Outside",
+        "shadowrocket": "Outside",
+        "clash": "Outside"
+      }
+    },
+    {
+      "key": "AppleCN",
+      "file": "AppleCN.list",
+      "tag": "AppleCN",
+      "targets": {
+        "surge": "Mainland",
+        "loon": "DIRECT",
+        "qx": "DIRECT",
+        "shadowrocket": "Mainland",
+        "clash": "DIRECT"
+      }
+    },
+    {
+      "key": "AppleServers",
+      "file": "AppleServers.list",
+      "tag": "AppleServers",
+      "targets": {
+        "surge": "Outside",
+        "loon": "Outside",
+        "qx": "Outside",
+        "shadowrocket": "Apple",
+        "clash": "Apple"
+      }
+    }
+  ],
+  "shadowrocket_tail": [
+    "GEOIP,CN,Mainland",
+    "FINAL,NoAuto"
+  ],
+  "qx_tail": [
+    "FILTER_LAN, tag=LAN, force-policy=direct, enabled=true",
+    "FILTER_REGION, tag=CN, force-policy=direct, enabled=true"
+  ],
+  "clash_tail": [
+    "- GEOSITE,onedrive,Microsoft",
+    "- GEOSITE,github,Microsoft",
+    "- GEOSITE,microsoft,Microsoft",
+    "- GEOSITE,gfw,Outside",
+    "- GEOSITE,cn,DIRECT",
+    "- GEOIP,lan,DIRECT",
+    "- GEOIP,CN,DIRECT",
+    "- MATCH,NoAuto"
+  ]
+}

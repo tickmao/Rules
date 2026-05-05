@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:49:16 CST
+# @LocalPath   Loon/Rules/Ads_SukkaW.list
+# @Maintainer  tickmao
+# ============================================
+URL-REGEX,/igd\.xml

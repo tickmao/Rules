@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:55:37 CST
+# @LocalPath   Clash/Meta/Rules/Proxy.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR,44.205.88.94/32,no-resolve

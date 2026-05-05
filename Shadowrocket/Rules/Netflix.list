@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:49:16 CST
+# @LocalPath   Shadowrocket/Rules/Netflix.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR,8.41.4.0/24,no-resolve

@@ -1,0 +1,31 @@
+{
+  "allowed_target_diffs": {
+    "Spotify": {
+      "clash": "Gmedia"
+    },
+    "AppleServers": {
+      "shadowrocket": "Apple",
+      "clash": "Apple"
+    },
+    "Direct": {
+      "surge": "Mainland",
+      "shadowrocket": "Mainland"
+    },
+    "AppleCN": {
+      "surge": "Mainland",
+      "shadowrocket": "Mainland"
+    },
+    "TikTok": {
+      "shadowrocket": "Gmedia",
+      "clash": "Gmedia"
+    }
+  },
+  "non_core_sections": [
+    "Rewrite",
+    "Script",
+    "Plugin",
+    "MITM",
+    "URL Rewrite",
+    "Host"
+  ]
+}

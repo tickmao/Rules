@@ -3,6 +3,8 @@ import argparse
 import json
 import re
 import sys
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 
@@ -153,6 +155,29 @@ def update_file(path: Path, new_text: str, dry_run: bool) -> bool:
     return True
 
 
+def build_update_time() -> str:
+    now = datetime.now(ZoneInfo("Asia/Shanghai"))
+    return f"⏱{now.strftime('%Y/%m/%d %H:%M')} UTC/GMT +8"
+
+
+def update_header_time(path: Path, update_time: str, dry_run: bool) -> bool:
+    text = path.read_text(encoding="utf-8")
+    new_text, n = re.subn(
+        r"(^\s*[#;]\s*@UpdateTime\s+).*?$",
+        rf"\1{update_time}",
+        text,
+        count=1,
+        flags=re.M,
+    )
+    if n == 0:
+        return False
+    if new_text == text:
+        return False
+    if not dry_run:
+        path.write_text(new_text, encoding="utf-8")
+    return True
+
+
 def generate_report(report_path: Path, changed: list[str], dry_run: bool) -> None:
     if not changed:
         return
@@ -168,6 +193,96 @@ def generate_report(report_path: Path, changed: list[str], dry_run: bool) -> Non
     if not dry_run:
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def normalize_comment_style(path: Path, dry_run: bool) -> bool:
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    out = []
+    changed = False
+    prev_comment = None
+
+    for ln in lines:
+        ln_clean = ln.rstrip()
+        if ln_clean != ln:
+            changed = True
+        ln = ln_clean
+
+        s = ln.strip()
+        if s == "# =======================================":
+            changed = True
+            continue
+
+        if re.match(r"^#\s*={8,}.*$", s):
+            normalized = "# 配置分割线"
+            if out and out[-1] == normalized:
+                changed = True
+                continue
+            out.append(normalized)
+            if ln != normalized:
+                changed = True
+            prev_comment = normalized
+            continue
+
+        m = re.match(r"^#\s*=+\s*(.*?)\s*=+\s*$", s)
+        if m:
+            title = m.group(1).strip()
+            normalized = f"# {title}" if title else "#"
+            if out and out[-1] == normalized:
+                changed = True
+                continue
+            out.append(normalized)
+            if normalized != ln:
+                changed = True
+            prev_comment = normalized
+            continue
+
+        cm = re.match(r"^(\s*)#(.*)$", ln)
+        if cm:
+            indent, body = cm.group(1), cm.group(2).replace("\u3000", " ")
+            if body == "":
+                normalized = f"{indent}#"
+            else:
+                # Keep inner indentation for commented examples while normalizing "#foo" -> "# foo".
+                normalized = f"{indent}#{body}" if body.startswith(" ") else f"{indent}# {body}"
+            if out and out[-1] == normalized and normalized.strip() != "#":
+                changed = True
+                continue
+            out.append(normalized)
+            if normalized != ln:
+                changed = True
+            prev_comment = normalized
+            continue
+
+        out.append(ln)
+        prev_comment = None
+
+    collapsed = []
+    blank = 0
+    for ln in out:
+        if ln == "":
+            blank += 1
+            if blank <= 1:
+                collapsed.append(ln)
+            else:
+                changed = True
+        else:
+            blank = 0
+            collapsed.append(ln)
+
+    while collapsed and collapsed[0] == "":
+        collapsed.pop(0)
+        changed = True
+    while collapsed and collapsed[-1] == "":
+        collapsed.pop()
+        changed = True
+
+    new_text = "\n".join(collapsed) + "\n"
+    if new_text != text:
+        changed = True
+        if not dry_run:
+            path.write_text(new_text, encoding="utf-8")
+    return changed
 
 
 def main() -> int:
@@ -241,6 +356,17 @@ def main() -> int:
     clash_new = replace_between_markers(clash_text, rl_marker_start, rl_marker_end, rl_payload)
     if update_file(clash_path, clash_new, args.dry_run):
         changed.append("Clash/Meta/Clash.yml")
+
+    update_time = build_update_time()
+    for key, path in MAIN_FILES.items():
+        if update_header_time(path, update_time, args.dry_run):
+            rel = str(path.relative_to(ROOT))
+            if rel not in changed:
+                changed.append(rel)
+        if normalize_comment_style(path, args.dry_run):
+            rel = str(path.relative_to(ROOT))
+            if rel not in changed:
+                changed.append(rel)
 
     generate_report(report_path, changed, args.dry_run)
 

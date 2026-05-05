@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    blackmatrix7
+# @SyncTime    2026-04-20 20:49:16 CST
+# @LocalPath   Surge/Rules/PayPal.list
+# @Maintainer  tickmao
+# ============================================
+USER-AGENT,PayPal*

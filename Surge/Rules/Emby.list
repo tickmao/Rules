@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:49:16 CST
+# @LocalPath   Surge/Rules/Emby.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR,212.90.120.164/32,no-resolve

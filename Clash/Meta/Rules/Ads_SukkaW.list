@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:55:37 CST
+# @LocalPath   Clash/Meta/Rules/Ads_SukkaW.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR6,240e:928:1400:10::25/128,no-resolve

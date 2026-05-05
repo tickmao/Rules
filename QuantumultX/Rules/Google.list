@@ -1,0 +1,7 @@
+# ============================================
+# @SyncFrom    Repcz
+# @SyncTime    2026-04-20 20:49:16 CST
+# @LocalPath   QuantumultX/Rules/Google.list
+# @Maintainer  tickmao
+# ============================================
+IP-CIDR,74.125.0.0/16,Google
