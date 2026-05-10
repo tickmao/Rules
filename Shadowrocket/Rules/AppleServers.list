@@ -1,7 +1,7 @@
 # ============================================
 # @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:49:16 CST
+# @SyncTime    2026-05-10 06:37:56 UTC
 # @LocalPath   Shadowrocket/Rules/AppleServers.list
 # @Maintainer  tickmao
 # ============================================
-PROCESS-NAME,netbiosd
+PROCESS-NAME,mapspushd

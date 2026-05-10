@@ -1,7 +1,7 @@
 # ============================================
 # @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:55:37 CST
+# @SyncTime    2026-05-10 06:37:56 UTC
 # @LocalPath   Clash/Meta/Rules/AppleServers.list
 # @Maintainer  tickmao
 # ============================================
-PROCESS-NAME,netbiosd
+PROCESS-NAME,mapspushd
