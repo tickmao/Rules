@@ -1,7 +1,7 @@
 # ============================================
 # @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:55:37 CST
+# @SyncTime    2026-05-13 06:52:32 UTC
 # @LocalPath   Clash/Meta/Rules/TikTok.list
 # @Maintainer  tickmao
 # ============================================
-DOMAIN-KEYWORD,ttlivecdn.com.
+IP-ASN,138699
