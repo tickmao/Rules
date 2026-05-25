@@ -1,7 +1,7 @@
 # ============================================
 # @SyncFrom    Repcz
-# @SyncTime    2026-05-13 06:52:32 UTC
+# @SyncTime    2026-05-25 08:25:32 UTC
 # @LocalPath   Shadowrocket/Rules/TikTok.list
 # @Maintainer  tickmao
 # ============================================
-IP-ASN,138699
+IP-ASN,138699,no-resolve
