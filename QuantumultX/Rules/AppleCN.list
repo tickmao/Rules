@@ -1,7 +1,7 @@
 # ============================================
 # @SyncFrom    Repcz
-# @SyncTime    2026-05-26 07:56:02 UTC
+# @SyncTime    2026-05-27 08:08:11 UTC
 # @LocalPath   QuantumultX/Rules/AppleCN.list
 # @Maintainer  tickmao
 # ============================================
-HOST-SUFFIX,icloud.com.cn,AppleCN
+HOST-SUFFIX,xp.apple.com,AppleCN
