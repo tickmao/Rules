@@ -1,0 +1,34 @@
+# macOS / editor
+.DS_Store
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.local
+*.private
+private/
+
+# Logs / temp
+*.log
+tmp/
+temp/
+*.bak
+*.backup
+
+# Generated reports
+reports/sync_report.md
+
+# Local proxy/subscription outputs
+proxy-providers/
+*/proxy-providers/
+Sub.yaml
+*.provider

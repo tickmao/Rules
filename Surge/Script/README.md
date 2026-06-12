@@ -1,2 +1,11 @@
-# Surge Scripts
-Used for placing Javascript file references for your Surge modules.
+# Surge Script
+
+此目录用于存放 Surge 模块需要引用的 JavaScript 脚本或脚本说明。
+
+## 上传规则
+
+- 可上传公开、无个人信息、确实需要自托管的脚本。
+- 不上传包含账号、Token、Cookie、订阅地址、私有接口的脚本。
+- 若脚本只需远程引用上游地址，优先在模块中保留远程链接，不复制到本目录。
+
+当前目录仅作为预留目录使用。

@@ -1,26 +1,33 @@
-# Surge Modules 模块仓库
+# Surge Module
 
-此文件夹用于存放您可以自托管或引用的 Surge 模块 (`.sgmodule`)。
+此目录用于存放需要自托管或固定版本的 Surge 模块。
 
-您由于大部分优秀的去广告、重写插件本身维护频率极高（例如去开屏广告），建议不要将全部代码复制到本地，而是通过 Surge UI 直接安装远程模块。针对需要固定版本的模块，可以存放在本目录下。
+## 使用建议
 
-## 推荐模块引用链接 (请在 Surge 中复制安装)
+- 优先在 Surge 中直接安装上游远程模块，便于及时获得维护者更新。
+- 只有在需要固定版本、修改内容或离线引用时，才将 `.sgmodule` 文件放入本目录。
+- 新增第三方模块前，确认来源、授权和更新频率；不建议把可随时重新拉取且未修改的模块长期提交到仓库。
+- 私有模块、含个人订阅或账号信息的模块不要提交到 GitHub。
 
-### 工具类
-- **BoxJS** (用于配合本地 Script 管理重写存储):
-  `https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.surge.sgmodule`
+## 当前模块
 
-- **Sub-Store** (高级订阅管理):
-  `https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge.sgmodule`
+- `BoxJs.sgmodule`: BoxJs 重写模块
+- `SubStore.sgmodule`: Sub-Store 订阅管理模块
 
-- **Script-Hub** (脚本转换器):
-  `https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Script-Hub.sgmodule`
+## 推荐远程引用
 
-### 去广告 & 增强
-可以参考常用插件维护者的上游：
-- app2smile (Spotify解锁等)
-- Maasea (YouTube去广告)
-- BiliUniverse (B站增强)
-- lodepuly / NobyDa 等等
+```text
+https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.surge.sgmodule
+https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge.sgmodule
+https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Script-Hub.sgmodule
+```
 
-若您需要对模块进行自托管修改，只需将他们的 `.sgmodule` 下载后放入本文件夹，并在 Surge 中使用 `Surge/Module/您的模块名.sgmodule` 的形式进行离线导入。
+## 更新方式
+
+如需刷新本目录中的固定模块，可运行：
+
+```bash
+python3 scripts/fetch_surge_modules.py
+```
+
+该脚本会访问上游网络资源，运行前请确认网络环境和下载列表。
