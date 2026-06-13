@@ -95,7 +95,8 @@ def parse_loon_groups(text: str) -> set[str]:
 
 
 def parse_qx_policies(text: str) -> set[str]:
-    policies = {"direct", "reject", "proxy", "DIRECT", "REJECT", "PROXY"}
+    reserved = {"direct", "reject", "proxy"}
+    policies = set(reserved) | {name.upper() for name in reserved}
     in_policy = False
     for raw in text.splitlines():
         line = raw.strip()
@@ -108,6 +109,8 @@ def parse_qx_policies(text: str) -> set[str]:
             after_eq = line.split("=", 1)[1]
             first = after_eq.split(",", 1)[0].strip()
             if first:
+                if first.lower() in reserved:
+                    add_error(f"[qx] policy group uses reserved name: {first}")
                 policies.add(first)
     return policies
 
