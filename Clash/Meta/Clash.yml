@@ -79,7 +79,7 @@ dns:
   nameserver: [quic://223.5.5.5, quic://223.6.6.6, https://1.12.12.12/dns-query, https://120.53.53.53/dns-query, https://223.5.5.5/dns-query#h3=true, https://223.6.6.6/dns-query#h3=true]
 
 # 策略组引用相关参数
-pg: &pg {type: select, proxies: [Proxy, United States, Japan, Europe, United States Fallback, Japan Fallback, Europe Fallback, DIRECT]}
+pg: &pg {type: select, proxies: [Proxy, US Manual, JP Manual, EU Manual, All, DIRECT]}
 # 订阅更新和延迟测试相关参数
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: http://latency-test.skk.moe/endpoint, interval: 60}}
 # 时延优选策略组：选取延迟最低节点
@@ -224,7 +224,9 @@ proxy-groups:
 
   # 分流分组
 
-  - {name: Proxy, type: select, include-all: true, proxies: [United States, Japan, Europe, United States Fallback, Japan Fallback, Europe Fallback, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png}
+  - {name: Proxy, type: select, proxies: [US Manual, JP Manual, EU Manual, All, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png}
+
+  - {name: All, <<: *select, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png}
 
   - {name: Outside, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png}
 
@@ -244,41 +246,71 @@ proxy-groups:
 
   - {name: Game, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png}
 
-  - {name: Emby, <<: *pg, include-all: true, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
+  - {name: Emby, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
 
   - {name: Reject, type: select, proxies: [REJECT, DIRECT], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png}
 
-  - {name: NoAuto, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color//Final.png}
+  - {name: Final, <<: *pg, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png}
 
-  # 节点地区分组
+  # 地区分组
 
-  # - {name: Hong Kong, <<: *url-test, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+  # - {name: HK Manual, type: select, proxies: [HK Auto, HK Fallback, HK Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
 
-  - {name: United States, <<: *url-test, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+  - {name: US Manual, type: select, proxies: [US Auto, US Fallback, US Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
 
-  - {name: Japan, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+  - {name: JP Manual, type: select, proxies: [JP Auto, JP Fallback, JP Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
 
-  # - {name: Singapore, <<: *url-test, filter: "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
+  # - {name: SG Manual, type: select, proxies: [SG Auto, SG Fallback, SG Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
 
-  # - {name: Taiwan, <<: *url-test, filter: "^(?=.*((?i)🇹🇼|台湾|台北|新北|(\b(TW|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
+  # - {name: TW Manual, type: select, proxies: [TW Auto, TW Fallback, TW Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
 
-  # - {name: Korea, <<: *url-test, filter: "^(?=.*((?i)🇰🇷|韩国|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
+  # - {name: KR Manual, type: select, proxies: [KR Auto, KR Fallback, KR Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
 
-  - {name: Europe, <<: *url-test, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|Europe)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+  - {name: EU Manual, type: select, proxies: [EU Auto, EU Fallback, EU Balance], icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
 
-  # - {name: Hong Kong Fallback, <<: *fallback, filter: "(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+  # 地区策略
 
-  - {name: United States Fallback, <<: *fallback, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+  # - {name: HK Auto, <<: *url-test, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
 
-  - {name: Japan Fallback, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+  - {name: US Auto, <<: *url-test, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
 
-  # - {name: Singapore Fallback, <<: *fallback, filter: "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
+  - {name: JP Auto, <<: *url-test, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
 
-  # - {name: Taiwan Fallback, <<: *fallback, filter: "^(?=.*((?i)🇹🇼|台湾|台北|新北|(\b(TW|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
+  # - {name: SG Auto, <<: *url-test, filter: "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
 
-  # - {name: Korea Fallback, <<: *fallback, filter: "^(?=.*((?i)🇰🇷|韩国|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
+  # - {name: TW Auto, <<: *url-test, filter: "^(?=.*((?i)🇹🇼|台湾|台北|新北|(\b(TW|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
 
-  - {name: Europe Fallback, <<: *fallback, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|Europe)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+  # - {name: KR Auto, <<: *url-test, filter: "^(?=.*((?i)🇰🇷|韩国|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
+
+  - {name: EU Auto, <<: *url-test, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|德国|法国|欧洲|(\b(UK|Europe|EU)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
+  # - {name: HK Fallback, <<: *fallback, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: US Fallback, <<: *fallback, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: JP Fallback, <<: *fallback, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  # - {name: SG Fallback, <<: *fallback, filter: "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
+
+  # - {name: TW Fallback, <<: *fallback, filter: "^(?=.*((?i)🇹🇼|台湾|台北|新北|(\b(TW|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
+
+  # - {name: KR Fallback, <<: *fallback, filter: "^(?=.*((?i)🇰🇷|韩国|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
+
+  - {name: EU Fallback, <<: *fallback, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|德国|法国|欧洲|(\b(UK|Europe|EU)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
+
+  # - {name: HK Balance, <<: *load-balance, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png}
+
+  - {name: US Balance, <<: *load-balance, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png}
+
+  - {name: JP Balance, <<: *load-balance, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大坂|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png}
+
+  # - {name: SG Balance, <<: *load-balance, filter: "^(?=.*((?i)🇸🇬|新加坡|狮城|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png}
+
+  # - {name: TW Balance, <<: *load-balance, filter: "^(?=.*((?i)🇹🇼|台湾|台北|新北|(\b(TW|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png}
+
+  # - {name: KR Balance, <<: *load-balance, filter: "^(?=.*((?i)🇰🇷|韩国|首尔|(\b(KR|Korea)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png}
+
+  - {name: EU Balance, <<: *load-balance, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|德国|法国|欧洲|(\b(UK|Europe|EU)\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$", icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/European_Union.png}
 
 rule-providers:
 # >>> AUTO-GENERATED CORE START >>> rule-providers
@@ -345,5 +377,5 @@ rules:
   - GEOSITE,cn,DIRECT
   - GEOIP,lan,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,NoAuto
+  - MATCH,Final
 # <<< AUTO-GENERATED CORE END <<< rules

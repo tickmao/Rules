@@ -117,7 +117,11 @@ def parse_qx_policies(text: str) -> set[str]:
 
 def parse_clash_proxy_groups(text: str) -> set[str]:
     groups = set()
-    for m in re.finditer(r"\{name:\s*([^,}]+)", text):
+    block_match = re.search(r"(?ms)^proxy-groups:\s*\n(.*?)(?=^[A-Za-z0-9_-]+:)", text)
+    block = block_match.group(1) if block_match else text
+    for m in re.finditer(r"\{name:\s*([^,}]+)", block):
+        groups.add(m.group(1).strip().strip('"').strip("'"))
+    for m in re.finditer(r"^\s*-\s*name:\s*([^#\n]+)", block, flags=re.M):
         groups.add(m.group(1).strip().strip('"').strip("'"))
     groups.update({"DIRECT", "REJECT", "Proxy", "PROXY"})
     return groups
