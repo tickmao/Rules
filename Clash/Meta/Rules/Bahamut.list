@@ -1,7 +1,20 @@
 # ============================================
-# @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:55:37 CST
+# @SyncFrom    blackmatrix7/Bahamut
+# @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Clash/Meta/Rules/Bahamut.list
 # @Maintainer  tickmao
 # ============================================
+# NAME: Bahamut
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-06-06 09:16:56
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 6
+# TOTAL: 7
+DOMAIN,bahamut.akamaized.net
+DOMAIN-SUFFIX,bahamut.com.tw
+DOMAIN-SUFFIX,digicert.com
 DOMAIN-SUFFIX,gamer.com.tw
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN-SUFFIX,hinet.net
+DOMAIN-SUFFIX,viblast.com

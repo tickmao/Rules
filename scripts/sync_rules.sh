@@ -8,6 +8,7 @@ set -e
 # ================= Configuration =================
 WORK_DIR=$(cd "$(dirname "$0")/.." && pwd)
 DRY_RUN=false
+SKIP_REBUILD=false
 SYNC_PLATFORMS=()
 
 ALL_PLATFORMS=("Surge" "Loon" "QuantumultX" "Clash" "Shadowrocket")
@@ -15,8 +16,10 @@ ALL_PLATFORMS=("Surge" "Loon" "QuantumultX" "Clash" "Shadowrocket")
 # 上游基准 URL
 REPCZ_BASE="https://raw.githubusercontent.com/Repcz/Tool/X"
 BLACKMATRIX_BASE="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule"
+MIN_RULE_LINES=2
 
 # 规则字典定义（每个元素结构："本地相对路径|上游URL|来源名"）
+# 实际同步源由 resolve_remote_rule 统一解析，保留 URL/来源字段用于兼容旧格式。
 RULES=()
 
 # ----------------- Surge Rules -----------------
@@ -166,6 +169,9 @@ for arg in "$@"; do
             DRY_RUN=true
             echo "⚠️  [DRY RUN MODE] No files will be modified."
             ;;
+        --skip-rebuild)
+            SKIP_REBUILD=true
+            ;;
         sur|surge)
             SYNC_PLATFORMS+=("Surge")
             ;;
@@ -183,7 +189,7 @@ for arg in "$@"; do
             ;;
         *)
             echo "Unknown argument: $arg"
-            echo "Usage: $0 [surge|loon|qx|clash|sr] [--dry-run]"
+            echo "Usage: $0 [surge|loon|qx|clash|sr] [--dry-run] [--skip-rebuild]"
             exit 1
             ;;
     esac
@@ -214,6 +220,45 @@ get_platform() {
     echo "$path" | cut -d'/' -f1
 }
 
+# 将本地规则名映射到更完整、常用的 blackmatrix7 上游规则名。
+get_upstream_rule_name() {
+    local name=$1
+    case "$name" in
+        Ads_SukkaW) echo "Advertising" ;;
+        Reject) echo "AdvertisingLite" ;;
+        AI) echo "OpenAI" ;;
+        Github) echo "GitHub" ;;
+        AppleCN) echo "Apple" ;;
+        AppleServers) echo "AppleProxy" ;;
+        *) echo "$name" ;;
+    esac
+}
+
+get_remote_platform() {
+    local platform=$1
+    case "$platform" in
+        Shadowrocket) echo "Surge" ;;
+        *) echo "$platform" ;;
+    esac
+}
+
+resolve_remote_rule() {
+    local local_path=$1
+    local platform rule_name upstream_name remote_platform
+
+    platform=$(get_platform "$local_path")
+    rule_name=$(basename "$local_path" .list)
+    upstream_name=$(get_upstream_rule_name "$rule_name")
+    remote_platform=$(get_remote_platform "$platform")
+
+    REMOTE_URL="${BLACKMATRIX_BASE}/${remote_platform}/${upstream_name}/${upstream_name}.list"
+    SOURCE="blackmatrix7/${upstream_name}"
+}
+
+count_rule_lines() {
+    awk 'BEGIN{n=0} /^[[:space:]]*($|#|;|\/\/)/{next} {n++} END{print n}' "$1"
+}
+
 # ================= Main Sync Loop =================
 
 SYNC_TIME="$(date '+%Y-%m-%d %H:%M:%S %Z')"
@@ -229,6 +274,8 @@ for rule in "${RULES[@]}"; do
     if ! should_sync_platform "$PLATFORM"; then
         continue
     fi
+
+    resolve_remote_rule "$LOCAL_PATH"
     
     FULL_LOCAL_PATH="$WORK_DIR/$LOCAL_PATH"
     
@@ -247,12 +294,20 @@ for rule in "${RULES[@]}"; do
     echo -n "⬇️  Downloading $LOCAL_PATH ... "
     
     # 下载并检查 HTTP 状态码
-    HTTP_CODE=$(curl -sL --write-out "%{http_code}" -o "$TEMP_FILE" "$REMOTE_URL")
+    HTTP_CODE=$(curl -sL --retry 3 --connect-timeout 20 --write-out "%{http_code}" -o "$TEMP_FILE" "$REMOTE_URL")
     
     if [ "$HTTP_CODE" -eq 200 ] && [ -s "$TEMP_FILE" ]; then
-        # 移除文件末尾多余的空行
-        awk 'NF{s=$0"\n";next} {s=s"\n"} END{printf "%s", s}' "$TEMP_FILE" > "${TEMP_FILE}.clean"
+        # 移除文件末尾多余的空行，同时保留完整规则内容。
+        awk '{lines[NR]=$0} END{last=NR; while (last > 0 && lines[last] ~ /^[[:space:]]*$/) last--; for (i=1; i<=last; i++) print lines[i]}' "$TEMP_FILE" > "${TEMP_FILE}.clean"
         mv "${TEMP_FILE}.clean" "$TEMP_FILE"
+
+        RULE_LINE_COUNT=$(count_rule_lines "$TEMP_FILE")
+        if [ "$RULE_LINE_COUNT" -lt "$MIN_RULE_LINES" ]; then
+            echo "❌ FAILED (Only $RULE_LINE_COUNT rule line(s), below minimum $MIN_RULE_LINES)"
+            COUNT_FAIL=$((COUNT_FAIL+1))
+            rm -f "$TEMP_FILE"
+            continue
+        fi
 
         # 判断是否和本地内容一致（跳过 6 行自定义 header）
         if [ -f "$FULL_LOCAL_PATH" ]; then
@@ -296,6 +351,11 @@ echo "============================================"
 
 if [ "$COUNT_FAIL" -gt 0 ]; then
     exit 1
+fi
+
+if [ "$SKIP_REBUILD" = true ]; then
+    echo "⏭️  Skipping core rebuild and validation."
+    exit 0
 fi
 
 echo "🧱 Rebuilding cross-platform core blocks..."

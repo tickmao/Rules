@@ -1,7 +1,17 @@
 # ============================================
-# @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:49:16 CST
+# @SyncFrom    blackmatrix7/Instagram
+# @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Surge/Rules/Instagram.list
 # @Maintainer  tickmao
 # ============================================
+# NAME: Instagram
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-06-06 09:16:56
+# DOMAIN-KEYWORD: 1
+# DOMAIN-SUFFIX: 3
+# TOTAL: 4
+DOMAIN-SUFFIX,cdninstagram.com
+DOMAIN-SUFFIX,instagr.am
+DOMAIN-SUFFIX,instagram.com
 DOMAIN-KEYWORD,instagram

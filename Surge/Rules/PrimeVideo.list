@@ -1,7 +1,33 @@
 # ============================================
-# @SyncFrom    Repcz
-# @SyncTime    2026-04-20 20:49:16 CST
+# @SyncFrom    blackmatrix7/PrimeVideo
+# @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Surge/Rules/PrimeVideo.list
 # @Maintainer  tickmao
 # ============================================
+# NAME: PrimeVideo
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-06-06 09:17:50
+# DOMAIN: 9
+# DOMAIN-KEYWORD: 1
+# DOMAIN-SUFFIX: 6
+# USER-AGENT: 2
+# TOTAL: 18
+DOMAIN,atv-ps.amazon.com
+DOMAIN,avodmp4s3ww-a.akamaihd.net
+DOMAIN,d1v5ir2lpwr8os.cloudfront.net
+DOMAIN,d22qjgkvxw22r6.cloudfront.net
+DOMAIN,d25xi40x97liuc.cloudfront.net
+DOMAIN,d27xxe7juh1us6.cloudfront.net
+DOMAIN,dmqdd6hw24ucf.cloudfront.net
+DOMAIN,fls-na.amazon.com
+DOMAIN,www.amazon.com
+DOMAIN-SUFFIX,aiv-cdn.net
+DOMAIN-SUFFIX,aiv-delivery.net
+DOMAIN-SUFFIX,amazonvideo.com
+DOMAIN-SUFFIX,media-amazon.com
+DOMAIN-SUFFIX,primevideo.com
+DOMAIN-SUFFIX,pv-cdn.net
 DOMAIN-KEYWORD,avoddashs
+USER-AGENT,InstantVideo.US*
+USER-AGENT,Prime%20Video*
