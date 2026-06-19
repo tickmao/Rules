@@ -1,16 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/GitHub
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Loon/Rules/Github.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: GitHub
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-12 02:06:19
-# DOMAIN-KEYWORD: 1
-# DOMAIN-SUFFIX: 30
-# TOTAL: 31
 DOMAIN-SUFFIX,atom.io
 DOMAIN-SUFFIX,dependabot.com
 DOMAIN-SUFFIX,ghcr.io

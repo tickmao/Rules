@@ -1,17 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/HBO
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Surge/Rules/HBO.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: HBO
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:16:58
-# DOMAIN-SUFFIX: 47
-# PROCESS-NAME: 1
-# USER-AGENT: 2
-# TOTAL: 50
 DOMAIN-SUFFIX,bcbolthboa-a.akamaihd.net
 DOMAIN-SUFFIX,cf-images.ap-southeast-1.prod.boltdns.net
 DOMAIN-SUFFIX,cinemax.com

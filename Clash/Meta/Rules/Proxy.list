@@ -1,19 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/Proxy
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Clash/Meta/Rules/Proxy.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: Proxy
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2026-06-08 02:31:09
-# DOMAIN: 9
-# DOMAIN-KEYWORD: 26
-# DOMAIN-SUFFIX: 6656
-# IP-CIDR: 93
-# IP-CIDR6: 4
-# TOTAL: 6788
 DOMAIN,api.waqi.info
 DOMAIN,aqi.aqicn.org
 DOMAIN,assets-priconne-redive-us.akamaized.net

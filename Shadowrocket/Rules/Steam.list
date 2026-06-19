@@ -1,16 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/Steam
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Shadowrocket/Rules/Steam.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: Steam
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:15:08
-# DOMAIN-KEYWORD: 3
-# DOMAIN-SUFFIX: 51
-# TOTAL: 54
 DOMAIN-SUFFIX,cdn-ali.content.steamchina.com
 DOMAIN-SUFFIX,cdn-qc.content.steamchina.com
 DOMAIN-SUFFIX,cdn-ws.content.steamchina.com

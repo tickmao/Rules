@@ -1,20 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/Proxy
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Shadowrocket/Rules/Proxy.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: Proxy
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2026-06-08 02:31:09
-# DOMAIN: 9
-# DOMAIN-KEYWORD: 26
-# DOMAIN-SUFFIX: 6656
-# IP-CIDR: 93
-# IP-CIDR6: 4
-# USER-AGENT: 8
-# TOTAL: 6796
 DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,1e100
 DOMAIN-KEYWORD,abema

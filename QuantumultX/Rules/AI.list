@@ -1,19 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/OpenAI
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   QuantumultX/Rules/AI.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: OpenAI
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:20:00
-# HOST: 7
-# HOST-KEYWORD: 1
-# HOST-SUFFIX: 24
-# IP-ASN: 1
-# IP-CIDR: 2
-# TOTAL: 35
 HOST,browser-intake-datadoghq.com,OpenAI
 HOST,chat.openai.com.cdn.cloudflare.net,OpenAI
 HOST,openai-api.arkoselabs.com,OpenAI

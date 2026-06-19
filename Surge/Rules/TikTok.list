@@ -1,19 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/TikTok
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Surge/Rules/TikTok.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: TikTok
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-08-10 02:08:00
-# DOMAIN: 4
-# DOMAIN-KEYWORD: 2
-# DOMAIN-SUFFIX: 25
-# PROCESS-NAME: 1
-# USER-AGENT: 1
-# TOTAL: 33
 DOMAIN,lf16-effectcdn.byteeffecttos-g.com
 DOMAIN,lf16-pkgcdn.pitaya-clientai.com
 DOMAIN,p16-tiktokcdn-com.akamaized.net

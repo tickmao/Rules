@@ -1,20 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/Proxy
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   QuantumultX/Rules/Proxy.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: Proxy
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2026-06-08 02:31:10
-# HOST: 19
-# HOST-KEYWORD: 26
-# HOST-SUFFIX: 7136
-# IP-CIDR: 93
-# IP6-CIDR: 4
-# USER-AGENT: 8
-# TOTAL: 7286
 HOST,api.msn.com,Proxy
 HOST,api.waqi.info,Proxy
 HOST,aqi.aqicn.org,Proxy

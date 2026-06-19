@@ -1,17 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/Emby
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   QuantumultX/Rules/Emby.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: Emby
-# AUTHOR: justdoiting
-# REPO: https://github.com/justdoiting/emby-rules
-# UPDATED: 2025-06-06 09:18:49
-# HOST: 3
-# HOST-KEYWORD: 3
-# HOST-SUFFIX: 45
-# TOTAL: 51
 HOST,emby.enjoyit.eu.org,Emby
 HOST,emby.lcloud.wiki,Emby
 HOST,notnetflix.cos.cat,Emby

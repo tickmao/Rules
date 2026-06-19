@@ -1,16 +1,9 @@
 # ============================================
-# @SyncFrom    blackmatrix7/PayPal
 # @SyncTime    2026-06-19 08:54:08 CST
 # @LocalPath   Clash/Meta/Rules/PayPal.list
+# @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
 # ============================================
-# NAME: PayPal
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:16:55
-# DOMAIN-KEYWORD: 1
-# DOMAIN-SUFFIX: 246
-# TOTAL: 247
 DOMAIN-SUFFIX,account-paypal.info
 DOMAIN-SUFFIX,account-paypal.net
 DOMAIN-SUFFIX,account-paypal.org
