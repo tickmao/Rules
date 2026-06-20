@@ -300,7 +300,7 @@
       "targets": {
         "surge": "Mainland",
         "loon": "DIRECT",
-        "qx": "DIRECT",
+        "qx": "direct",
         "shadowrocket": "Mainland",
         "clash": "DIRECT"
       }
