@@ -13,11 +13,11 @@
 
 ## 主配置链接
 
-- Surge: `https://raw.githubusercontent.com/tickmao/Rules/master/Surge/Surge.conf`
-- Loon: `https://raw.githubusercontent.com/tickmao/Rules/master/Loon/Loon.conf`
-- Quantumult X: `https://raw.githubusercontent.com/tickmao/Rules/master/QuantumultX/QuantumultX.conf`
-- Clash Meta: `https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Clash.yml`
-- Shadowrocket: `https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/Shadowrocket.conf`
+- Surge: [Surge.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Surge/Surge.conf)
+- Loon: [Loon.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Loon/Loon.conf)
+- Quantumult X: [QuantumultX.conf](https://raw.githubusercontent.com/tickmao/Rules/master/QuantumultX/QuantumultX.conf)
+- Clash Meta: [Clash.yml](https://raw.githubusercontent.com/tickmao/Rules/master/Clash/Meta/Clash.yml)
+- Shadowrocket: [Shadowrocket.conf](https://raw.githubusercontent.com/tickmao/Rules/master/Shadowrocket/Shadowrocket.conf)
 
 ## 说明
 
