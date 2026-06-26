@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-22 09:51:07 UTC
+# @SyncTime    2026-06-26 07:57:42 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -2361,6 +2361,7 @@ HOST-SUFFIX,geocities.jp,Proxy
 HOST-SUFFIX,geph.io,Proxy
 HOST-SUFFIX,gerefoundation.org,Proxy
 HOST-SUFFIX,get.app,Proxy
+HOST-SUFFIX,get.dappcdn.com,Proxy
 HOST-SUFFIX,get.dev,Proxy
 HOST-SUFFIX,get.how,Proxy
 HOST-SUFFIX,get.page,Proxy

@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-22 09:51:07 UTC
+# @SyncTime    2026-06-26 07:57:42 UTC
 # @LocalPath   Surge/Rules/AppleCN.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -43,9 +43,9 @@ USER-AGENT,locationd*
 USER-AGENT,passd*
 USER-AGENT,Music*
 USER-AGENT,AppleNews*
-USER-AGENT,AppleTV*
 USER-AGENT,com.apple.news*
 USER-AGENT,com.apple.trustd*
+USER-AGENT,AppleTV*
 USER-AGENT,com.apple.tv*
 PROCESS-NAME,CoreLocationAgent
 PROCESS-NAME,WeatherWidget
