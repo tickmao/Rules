@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-26 07:57:42 UTC
+# @SyncTime    2026-06-28 07:54:02 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1365,6 +1365,7 @@ HOST-SUFFIX,crazyshit.com,Proxy
 HOST-SUFFIX,crbug.com,Proxy
 HOST-SUFFIX,crchina.org,Proxy
 HOST-SUFFIX,crd-net.org,Proxy
+HOST-SUFFIX,creader.com,Proxy
 HOST-SUFFIX,creaders.net,Proxy
 HOST-SUFFIX,creadersnet.com,Proxy
 HOST-SUFFIX,creativelab5.com,Proxy
