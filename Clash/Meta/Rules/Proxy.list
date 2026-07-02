@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-30 07:57:03 UTC
+# @SyncTime    2026-07-02 07:36:53 UTC
 # @LocalPath   Clash/Meta/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1785,6 +1785,7 @@ DOMAIN-SUFFIX,expekt.com
 DOMAIN-SUFFIX,experts-univers.com
 DOMAIN-SUFFIX,exploader.net
 DOMAIN-SUFFIX,expofutures.com
+DOMAIN-SUFFIX,expressnews.com
 DOMAIN-SUFFIX,expressvpn.com
 DOMAIN-SUFFIX,exrates.me
 DOMAIN-SUFFIX,extmatrix.com

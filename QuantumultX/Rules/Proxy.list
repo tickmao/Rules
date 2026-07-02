@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-30 07:57:03 UTC
+# @SyncTime    2026-07-02 07:36:53 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1893,6 +1893,7 @@ HOST-SUFFIX,expekt.com,Proxy
 HOST-SUFFIX,experts-univers.com,Proxy
 HOST-SUFFIX,exploader.net,Proxy
 HOST-SUFFIX,expofutures.com,Proxy
+HOST-SUFFIX,expressnews.com,Proxy
 HOST-SUFFIX,expressvpn.com,Proxy
 HOST-SUFFIX,exrates.me,Proxy
 HOST-SUFFIX,extmatrix.com,Proxy
