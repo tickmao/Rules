@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-02 07:36:53 UTC
+# @SyncTime    2026-07-04 06:52:07 UTC
 # @LocalPath   Clash/Meta/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -6270,6 +6270,7 @@ DOMAIN-SUFFIX,webrtc.org
 DOMAIN-SUFFIX,webrush.net
 DOMAIN-SUFFIX,webs-tv.net
 DOMAIN-SUFFIX,websdr.org
+DOMAIN-SUFFIX,webshare.io
 DOMAIN-SUFFIX,website.new
 DOMAIN-SUFFIX,websitepulse.com
 DOMAIN-SUFFIX,websnapr.com

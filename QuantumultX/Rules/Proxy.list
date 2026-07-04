@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-02 07:36:53 UTC
+# @SyncTime    2026-07-04 06:52:07 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -6736,6 +6736,7 @@ HOST-SUFFIX,webrtc.org,Proxy
 HOST-SUFFIX,webrush.net,Proxy
 HOST-SUFFIX,webs-tv.net,Proxy
 HOST-SUFFIX,websdr.org,Proxy
+HOST-SUFFIX,webshare.io,Proxy
 HOST-SUFFIX,website.new,Proxy
 HOST-SUFFIX,websitepulse.com,Proxy
 HOST-SUFFIX,websnapr.com,Proxy
