@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-04 06:52:07 UTC
+# @SyncTime    2026-07-20 06:53:08 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -50,6 +50,7 @@ HOST-SUFFIX,17t17p.com,Proxy
 HOST-SUFFIX,18board.com,Proxy
 HOST-SUFFIX,18board.info,Proxy
 HOST-SUFFIX,18comic.org,Proxy
+HOST-SUFFIX,18comic.vip,Proxy
 HOST-SUFFIX,18mh.net,Proxy
 HOST-SUFFIX,18onlygirls.com,Proxy
 HOST-SUFFIX,18p2p.com,Proxy
