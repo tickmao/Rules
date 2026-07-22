@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-20 06:53:08 UTC
+# @SyncTime    2026-07-22 06:34:32 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1242,6 +1242,7 @@ HOST-SUFFIX,cixiaoya.club,Proxy
 HOST-SUFFIX,ck101.com,Proxy
 HOST-SUFFIX,cl.ly,Proxy
 HOST-SUFFIX,clarionproject.org,Proxy
+HOST-SUFFIX,clashyun.com,Proxy
 HOST-SUFFIX,classicalguitarblog.net,Proxy
 HOST-SUFFIX,claude.com,Proxy
 HOST-SUFFIX,clb.org.hk,Proxy
@@ -5742,6 +5743,7 @@ HOST-SUFFIX,syncback.com,Proxy
 HOST-SUFFIX,synergyse.com,Proxy
 HOST-SUFFIX,syosetu.com,Proxy
 HOST-SUFFIX,sysresccd.org,Proxy
+HOST-SUFFIX,sysub.com,Proxy
 HOST-SUFFIX,sytes.net,Proxy
 HOST-SUFFIX,syx86.com,Proxy
 HOST-SUFFIX,szbbs.net,Proxy
