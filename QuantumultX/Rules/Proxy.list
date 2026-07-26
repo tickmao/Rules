@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-24 06:30:42 UTC
+# @SyncTime    2026-07-26 06:41:12 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1219,6 +1219,7 @@ HOST-SUFFIX,ciciai.com,Proxy
 HOST-SUFFIX,cienen.com,Proxy
 HOST-SUFFIX,cineastentreff.de,Proxy
 HOST-SUFFIX,cipfg.org,Proxy
+HOST-SUFFIX,circle19.org,Proxy
 HOST-SUFFIX,circlethebayfortibet.org,Proxy
 HOST-SUFFIX,cirosantilli.com,Proxy
 HOST-SUFFIX,citizencn.com,Proxy
@@ -3558,6 +3559,7 @@ HOST-SUFFIX,kanzhongguo.com,Proxy
 HOST-SUFFIX,kanzhongguo.eu,Proxy
 HOST-SUFFIX,kaotic.com,Proxy
 HOST-SUFFIX,karayou.com,Proxy
+HOST-SUFFIX,kards.com,Proxy
 HOST-SUFFIX,karkhung.com,Proxy
 HOST-SUFFIX,karmapa-teachings.org,Proxy
 HOST-SUFFIX,karmapa.org,Proxy
