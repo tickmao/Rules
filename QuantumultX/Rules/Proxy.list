@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-07-26 06:41:12 UTC
+# @SyncTime    2026-07-30 06:32:28 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -6187,6 +6187,7 @@ HOST-SUFFIX,truth101.co.tv,Proxy
 HOST-SUFFIX,truthontour.org,Proxy
 HOST-SUFFIX,truthsocial.com,Proxy
 HOST-SUFFIX,truveo.com,Proxy
+HOST-SUFFIX,tryai.dev,Proxy
 HOST-SUFFIX,tryheart.jp,Proxy
 HOST-SUFFIX,tsctv.net,Proxy
 HOST-SUFFIX,tsemtulku.com,Proxy
