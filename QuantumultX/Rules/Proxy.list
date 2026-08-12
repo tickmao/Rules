@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-04 06:32:05 UTC
+# @SyncTime    2026-08-12 05:41:06 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -254,6 +254,7 @@ HOST-SUFFIX,ai-wen.net,Proxy
 HOST-SUFFIX,ai.dev,Proxy
 HOST-SUFFIX,ai.google,Proxy
 HOST-SUFFIX,ai.studio,Proxy
+HOST-SUFFIX,aihub.top,Proxy
 HOST-SUFFIX,aiosearch.com,Proxy
 HOST-SUFFIX,aiph.net,Proxy
 HOST-SUFFIX,airasia.com,Proxy
@@ -1578,6 +1579,7 @@ HOST-SUFFIX,disq.us,Proxy
 HOST-SUFFIX,disqus.com,Proxy
 HOST-SUFFIX,disquscdn.com,Proxy
 HOST-SUFFIX,dit-inc.us,Proxy
+HOST-SUFFIX,divdyn.com,Proxy
 HOST-SUFFIX,diyin.org,Proxy
 HOST-SUFFIX,dizhidizhi.com,Proxy
 HOST-SUFFIX,dizhuzhishang.com,Proxy
@@ -1858,6 +1860,7 @@ HOST-SUFFIX,eromangadouzin.com,Proxy
 HOST-SUFFIX,eromon.net,Proxy
 HOST-SUFFIX,eroprofile.com,Proxy
 HOST-SUFFIX,eroticsaloon.net,Proxy
+HOST-SUFFIX,esim.redteago.com,Proxy
 HOST-SUFFIX,eslite.com,Proxy
 HOST-SUFFIX,esmtp.biz,Proxy
 HOST-SUFFIX,esurance.com,Proxy
