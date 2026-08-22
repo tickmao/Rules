@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-20 04:41:40 UTC
+# @SyncTime    2026-08-22 04:38:25 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -4543,6 +4543,7 @@ HOST-SUFFIX,oklink.com,Proxy
 HOST-SUFFIX,okpool.me,Proxy
 HOST-SUFFIX,okx.com,Proxy
 HOST-SUFFIX,old-cat.net,Proxy
+HOST-SUFFIX,oldmapsonline.org,Proxy
 HOST-SUFFIX,olehdtv.com,Proxy
 HOST-SUFFIX,olelive.com,Proxy
 HOST-SUFFIX,olevod.com,Proxy

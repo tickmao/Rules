@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-20 04:41:40 UTC
+# @SyncTime    2026-08-22 04:38:25 UTC
 # @LocalPath   Clash/Meta/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -4140,6 +4140,7 @@ DOMAIN-SUFFIX,oklink.com
 DOMAIN-SUFFIX,okpool.me
 DOMAIN-SUFFIX,okx.com
 DOMAIN-SUFFIX,old-cat.net
+DOMAIN-SUFFIX,oldmapsonline.org
 DOMAIN-SUFFIX,olehdtv.com
 DOMAIN-SUFFIX,olelive.com
 DOMAIN-SUFFIX,olevod.com
