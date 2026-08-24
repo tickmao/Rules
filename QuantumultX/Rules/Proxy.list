@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-22 04:38:25 UTC
+# @SyncTime    2026-08-24 04:51:06 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -884,6 +884,7 @@ HOST-SUFFIX,breakgfw.com,Proxy
 HOST-SUFFIX,breaking911.com,Proxy
 HOST-SUFFIX,breakingtweets.com,Proxy
 HOST-SUFFIX,breakwall.net,Proxy
+HOST-SUFFIX,briarproject.org,Proxy
 HOST-SUFFIX,briefdream.com,Proxy
 HOST-SUFFIX,briian.com,Proxy
 HOST-SUFFIX,brill.com,Proxy
@@ -1105,6 +1106,7 @@ HOST-SUFFIX,chapm25.com,Proxy
 HOST-SUFFIX,character.ai,Proxy
 HOST-SUFFIX,chat.com,Proxy
 HOST-SUFFIX,chat.openai.com,Proxy
+HOST-SUFFIX,chatgpt.site,Proxy
 HOST-SUFFIX,chatnook.com,Proxy
 HOST-SUFFIX,chatpdf.com,Proxy
 HOST-SUFFIX,chaturbate.com,Proxy
@@ -2986,6 +2988,7 @@ HOST-SUFFIX,himemix.com,Proxy
 HOST-SUFFIX,himemix.net,Proxy
 HOST-SUFFIX,hindustantimes.com,Proxy
 HOST-SUFFIX,hinet.net,Proxy
+HOST-SUFFIX,historylines.net,Proxy
 HOST-SUFFIX,hitbtc.com,Proxy
 HOST-SUFFIX,hitomi.la,Proxy
 HOST-SUFFIX,hitun.io,Proxy
@@ -3605,6 +3608,7 @@ HOST-SUFFIX,kinokuniya.com,Proxy
 HOST-SUFFIX,kir.jp,Proxy
 HOST-SUFFIX,kissjav.com,Proxy
 HOST-SUFFIX,kiwi.kz,Proxy
+HOST-SUFFIX,kiwix.org,Proxy
 HOST-SUFFIX,kk-whys.co.jp,Proxy
 HOST-SUFFIX,kkbox.com,Proxy
 HOST-SUFFIX,kknews.cc,Proxy
@@ -3938,6 +3942,7 @@ HOST-SUFFIX,maxing.jp,Proxy
 HOST-SUFFIX,mayimayi.com,Proxy
 HOST-SUFFIX,mcadforums.com,Proxy
 HOST-SUFFIX,mcaf.ee,Proxy
+HOST-SUFFIX,mceindex.com,Proxy
 HOST-SUFFIX,mcfog.com,Proxy
 HOST-SUFFIX,mcreasite.com,Proxy
 HOST-SUFFIX,mcusercontent.com,Proxy
@@ -5272,6 +5277,7 @@ HOST-SUFFIX,saveuighur.org,Proxy
 HOST-SUFFIX,savevid.com,Proxy
 HOST-SUFFIX,say2.info,Proxy
 HOST-SUFFIX,sb-cd.com,Proxy
+HOST-SUFFIX,sb.sb,Proxy
 HOST-SUFFIX,sbme.me,Proxy
 HOST-SUFFIX,sbs.com.au,Proxy
 HOST-SUFFIX,sbti.unun.dev,Proxy
