@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-24 04:51:06 UTC
+# @SyncTime    2026-08-26 04:45:19 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -415,6 +415,7 @@ HOST-SUFFIX,api.amplitude.com,Proxy
 HOST-SUFFIX,api.mixpanel.com,Proxy
 HOST-SUFFIX,api.moomoobull.com,Proxy
 HOST-SUFFIX,api.proxlet.com,Proxy
+HOST-SUFFIX,api.shuaiapi.com,Proxy
 HOST-SUFFIX,api.termius.com,Proxy
 HOST-SUFFIX,apiary.io,Proxy
 HOST-SUFFIX,apigee.com,Proxy
@@ -6950,6 +6951,7 @@ HOST-SUFFIX,x1949x.com,Proxy
 HOST-SUFFIX,x24hr.com,Proxy
 HOST-SUFFIX,x365x.com,Proxy
 HOST-SUFFIX,x3guide.com,Proxy
+HOST-SUFFIX,x86.fr,Proxy
 HOST-SUFFIX,xanga.com,Proxy
 HOST-SUFFIX,xbabe.com,Proxy
 HOST-SUFFIX,xbookcn.com,Proxy
