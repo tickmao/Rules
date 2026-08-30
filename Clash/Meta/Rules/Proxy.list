@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-26 04:45:19 UTC
+# @SyncTime    2026-08-30 09:51:13 UTC
 # @LocalPath   Clash/Meta/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -6444,6 +6444,7 @@ DOMAIN-SUFFIX,wqyd.org
 DOMAIN-SUFFIX,wr.pvp.net
 DOMAIN-SUFFIX,wrchina.org
 DOMAIN-SUFFIX,wretch.cc
+DOMAIN-SUFFIX,write.as
 DOMAIN-SUFFIX,writesonic.com
 DOMAIN-SUFFIX,wsj.com
 DOMAIN-SUFFIX,wsj.net
