@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-08-30 09:51:13 UTC
+# @SyncTime    2026-09-01 09:18:07 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -2391,6 +2391,7 @@ HOST-SUFFIX,getjetso.com,Proxy
 HOST-SUFFIX,getlantern.org,Proxy
 HOST-SUFFIX,getmalus.com,Proxy
 HOST-SUFFIX,getmdl.io,Proxy
+HOST-SUFFIX,getmonero.org,Proxy
 HOST-SUFFIX,getoutline.org,Proxy
 HOST-SUFFIX,getpricetag.com,Proxy
 HOST-SUFFIX,getsession.org,Proxy
@@ -4390,6 +4391,7 @@ HOST-SUFFIX,nhncorp.jp,Proxy
 HOST-SUFFIX,nianticlabs.com,Proxy
 HOST-SUFFIX,nic.google,Proxy
 HOST-SUFFIX,nic.gov,Proxy
+HOST-SUFFIX,nicoseiga.jp,Proxy
 HOST-SUFFIX,nicovideo.jp,Proxy
 HOST-SUFFIX,nighost.org,Proxy
 HOST-SUFFIX,nightlife141.com,Proxy
