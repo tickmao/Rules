@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-01 09:18:07 UTC
+# @SyncTime    2026-09-06 08:33:29 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1400,6 +1400,7 @@ HOST-SUFFIX,csuchen.de,Proxy
 HOST-SUFFIX,csw.org.uk,Proxy
 HOST-SUFFIX,ct.org.tw,Proxy
 HOST-SUFFIX,ctao.org,Proxy
+HOST-SUFFIX,ctee.com.tw,Proxy
 HOST-SUFFIX,ctfriend.net,Proxy
 HOST-SUFFIX,ctinets.com,Proxy
 HOST-SUFFIX,ctinews.com,Proxy
@@ -3763,6 +3764,7 @@ HOST-SUFFIX,linode.com,Proxy
 HOST-SUFFIX,linpie.com,Proxy
 HOST-SUFFIX,linux.do,Proxy
 HOST-SUFFIX,linux.org.hk,Proxy
+HOST-SUFFIX,linux.sb,Proxy
 HOST-SUFFIX,linuxtoy.org,Proxy
 HOST-SUFFIX,lionsroar.com,Proxy
 HOST-SUFFIX,lipuman.com,Proxy

@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-01 09:18:07 UTC
+# @SyncTime    2026-09-06 08:33:29 UTC
 # @LocalPath   Clash/Meta/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1306,6 +1306,7 @@ DOMAIN-SUFFIX,csuchen.de
 DOMAIN-SUFFIX,csw.org.uk
 DOMAIN-SUFFIX,ct.org.tw
 DOMAIN-SUFFIX,ctao.org
+DOMAIN-SUFFIX,ctee.com.tw
 DOMAIN-SUFFIX,ctfriend.net
 DOMAIN-SUFFIX,ctinets.com
 DOMAIN-SUFFIX,ctinews.com
@@ -3361,6 +3362,7 @@ DOMAIN-SUFFIX,linode.com
 DOMAIN-SUFFIX,linpie.com
 DOMAIN-SUFFIX,linux.do
 DOMAIN-SUFFIX,linux.org.hk
+DOMAIN-SUFFIX,linux.sb
 DOMAIN-SUFFIX,linuxtoy.org
 DOMAIN-SUFFIX,lionsroar.com
 DOMAIN-SUFFIX,lipuman.com
