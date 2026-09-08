@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-06 08:33:29 UTC
+# @SyncTime    2026-09-08 08:45:54 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -34,6 +34,8 @@ HOST-SUFFIX,10beasts.net,Proxy
 HOST-SUFFIX,10conditionsoflove.com,Proxy
 HOST-SUFFIX,10musume.com,Proxy
 HOST-SUFFIX,111666.best,Proxy
+HOST-SUFFIX,123av.com,Proxy
+HOST-SUFFIX,123av.me,Proxy
 HOST-SUFFIX,123rf.com,Proxy
 HOST-SUFFIX,12bet.com,Proxy
 HOST-SUFFIX,12vpn.com,Proxy
@@ -2945,6 +2947,7 @@ HOST-SUFFIX,helpster.de,Proxy
 HOST-SUFFIX,helpzhuling.org,Proxy
 HOST-SUFFIX,hembed.com,Proxy
 HOST-SUFFIX,hentai.to,Proxy
+HOST-SUFFIX,hentai.tv,Proxy
 HOST-SUFFIX,hentaitube.tv,Proxy
 HOST-SUFFIX,hentaivideoworld.com,Proxy
 HOST-SUFFIX,heqinglian.net,Proxy
@@ -5191,6 +5194,7 @@ HOST-SUFFIX,roadshow.hk,Proxy
 HOST-SUFFIX,roblox.com,Proxy
 HOST-SUFFIX,roboforex.com,Proxy
 HOST-SUFFIX,robustnessiskey.com,Proxy
+HOST-SUFFIX,roc-taiwan.org,Proxy
 HOST-SUFFIX,rocket-inc.net,Proxy
 HOST-SUFFIX,rocket.chat,Proxy
 HOST-SUFFIX,rocketbbs.com,Proxy
@@ -5206,6 +5210,7 @@ HOST-SUFFIX,rosechina.net,Proxy
 HOST-SUFFIX,rotten.com,Proxy
 HOST-SUFFIX,rou.video,Proxy
 HOST-SUFFIX,roucdn.link,Proxy
+HOST-SUFFIX,roushuwo.com,Proxy
 HOST-SUFFIX,rpglogs.com,Proxy
 HOST-SUFFIX,rsdlmonitor.com,Proxy
 HOST-SUFFIX,rsf-chinese.org,Proxy
@@ -5731,6 +5736,7 @@ HOST-SUFFIX,supermariorun.com,Proxy
 HOST-SUFFIX,superpages.com,Proxy
 HOST-SUFFIX,supervpn.net,Proxy
 HOST-SUFFIX,superzooi.com,Proxy
+HOST-SUFFIX,supjav.com,Proxy
 HOST-SUFFIX,suppig.net,Proxy
 HOST-SUFFIX,supremecourt.gov,Proxy
 HOST-SUFFIX,suprememastertv.com,Proxy
@@ -5783,6 +5789,7 @@ HOST-SUFFIX,tafm.org,Proxy
 HOST-SUFFIX,tagwa.org.au,Proxy
 HOST-SUFFIX,tagwalk.com,Proxy
 HOST-SUFFIX,tahr.org.tw,Proxy
+HOST-SUFFIX,taiav.com,Proxy
 HOST-SUFFIX,tails.net,Proxy
 HOST-SUFFIX,taipeisociety.org,Proxy
 HOST-SUFFIX,taipeitimes.com,Proxy
@@ -5792,6 +5799,7 @@ HOST-SUFFIX,taiwanbible.com,Proxy
 HOST-SUFFIX,taiwancon.com,Proxy
 HOST-SUFFIX,taiwandaily.net,Proxy
 HOST-SUFFIX,taiwandc.org,Proxy
+HOST-SUFFIX,taiwanembassy.org,Proxy
 HOST-SUFFIX,taiwanhot.net,Proxy
 HOST-SUFFIX,taiwanjustice.com,Proxy
 HOST-SUFFIX,taiwanjustice.net,Proxy
@@ -6925,6 +6933,7 @@ HOST-SUFFIX,wsj.com,Proxy
 HOST-SUFFIX,wsj.net,Proxy
 HOST-SUFFIX,wsjhk.com,Proxy
 HOST-SUFFIX,wtbn.org,Proxy
+HOST-SUFFIX,wtfpass.com,Proxy
 HOST-SUFFIX,wtfpeople.com,Proxy
 HOST-SUFFIX,wuerkaixi.com,Proxy
 HOST-SUFFIX,wufafangwen.com,Proxy
