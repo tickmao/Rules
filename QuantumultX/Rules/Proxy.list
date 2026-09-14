@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-08 08:45:54 UTC
+# @SyncTime    2026-09-14 09:43:30 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -5043,6 +5043,7 @@ HOST-SUFFIX,qq.co.za,Proxy
 HOST-SUFFIX,qstatus.com,Proxy
 HOST-SUFFIX,qtrac.eu,Proxy
 HOST-SUFFIX,qtweeter.com,Proxy
+HOST-SUFFIX,quakemachinex.com,Proxy
 HOST-SUFFIX,quannengshen.org,Proxy
 HOST-SUFFIX,quantumbooter.net,Proxy
 HOST-SUFFIX,quay.io,Proxy
