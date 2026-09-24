@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-14 09:43:30 UTC
+# @SyncTime    2026-09-24 09:10:28 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -1191,6 +1191,7 @@ HOST-SUFFIX,chinesegay.org,Proxy
 HOST-SUFFIX,chinesen.de,Proxy
 HOST-SUFFIX,chinesenews.net.au,Proxy
 HOST-SUFFIX,chinesepen.org,Proxy
+HOST-SUFFIX,chineseposters.net,Proxy
 HOST-SUFFIX,chineseradioseattle.com,Proxy
 HOST-SUFFIX,chinesetalks.net,Proxy
 HOST-SUFFIX,chineseupress.com,Proxy
@@ -4444,6 +4445,7 @@ HOST-SUFFIX,nordstrommedia.com,Proxy
 HOST-SUFFIX,nordstromrack.com,Proxy
 HOST-SUFFIX,nordvpn.com,Proxy
 HOST-SUFFIX,nos.nl,Proxy
+HOST-SUFFIX,note.com,Proxy
 HOST-SUFFIX,notepad-plus-plus.org,Proxy
 HOST-SUFFIX,notion.so,Proxy
 HOST-SUFFIX,nottinghampost.com,Proxy
