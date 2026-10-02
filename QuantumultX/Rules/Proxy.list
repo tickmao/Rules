@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-09-28 10:44:32 UTC
+# @SyncTime    2026-10-02 10:23:55 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -2303,6 +2303,7 @@ HOST-SUFFIX,fututrade.com,Proxy
 HOST-SUFFIX,fututrustee.com,Proxy
 HOST-SUFFIX,fux.com,Proxy
 HOST-SUFFIX,fuyin.net,Proxy
+HOST-SUFFIX,fuyin116.com,Proxy
 HOST-SUFFIX,fuyindiantai.org,Proxy
 HOST-SUFFIX,fuyu.org.tw,Proxy
 HOST-SUFFIX,fw.cm,Proxy
@@ -4215,6 +4216,7 @@ HOST-SUFFIX,multiupload.com,Proxy
 HOST-SUFFIX,mummysgold.com,Proxy
 HOST-SUFFIX,murmur.tw,Proxy
 HOST-SUFFIX,muscdn.com,Proxy
+HOST-SUFFIX,muse.ai,Proxy
 HOST-SUFFIX,musicade.net,Proxy
 HOST-SUFFIX,musical.ly,Proxy
 HOST-SUFFIX,musixmatch.com,Proxy
