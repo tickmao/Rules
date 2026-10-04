@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-10-02 10:23:55 UTC
+# @SyncTime    2026-10-04 10:29:29 UTC
 # @LocalPath   QuantumultX/Rules/Proxy.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -6744,6 +6744,7 @@ HOST-SUFFIX,wainao.me,Proxy
 HOST-SUFFIX,waiwaier.com,Proxy
 HOST-SUFFIX,walletconnect.com,Proxy
 HOST-SUFFIX,walletconnect.org,Proxy
+HOST-SUFFIX,wallhaven.cc,Proxy
 HOST-SUFFIX,wallmama.com,Proxy
 HOST-SUFFIX,wallornot.org,Proxy
 HOST-SUFFIX,wallpapercasa.com,Proxy
@@ -6868,6 +6869,7 @@ HOST-SUFFIX,wiki.kfd.me,Proxy
 HOST-SUFFIX,wikia.com,Proxy
 HOST-SUFFIX,wikibooks.org,Proxy
 HOST-SUFFIX,wikidata.org,Proxy
+HOST-SUFFIX,wikifunctions.org,Proxy
 HOST-SUFFIX,wikileaks-forum.com,Proxy
 HOST-SUFFIX,wikileaks.ch,Proxy
 HOST-SUFFIX,wikileaks.com,Proxy
@@ -6880,12 +6882,14 @@ HOST-SUFFIX,wikileaks.pl,Proxy
 HOST-SUFFIX,wikilivres.info,Proxy
 HOST-SUFFIX,wikimapia.org,Proxy
 HOST-SUFFIX,wikimedia.org,Proxy
+HOST-SUFFIX,wikimediafoundation.org,Proxy
 HOST-SUFFIX,wikinews.org,Proxy
 HOST-SUFFIX,wikipedia.com,Proxy
 HOST-SUFFIX,wikipedia.org,Proxy
 HOST-SUFFIX,wikiquote.org,Proxy
 HOST-SUFFIX,wikis.tw,Proxy
 HOST-SUFFIX,wikisource.org,Proxy
+HOST-SUFFIX,wikispecies.org,Proxy
 HOST-SUFFIX,wikiunblocked.org,Proxy
 HOST-SUFFIX,wikiversity.org,Proxy
 HOST-SUFFIX,wikivoyage.org,Proxy
