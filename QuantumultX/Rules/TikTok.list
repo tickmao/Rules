@@ -1,5 +1,5 @@
 # ============================================
-# @SyncTime    2026-06-19 08:54:08 CST
+# @SyncTime    2026-10-16 08:54:26 UTC
 # @LocalPath   QuantumultX/Rules/TikTok.list
 # @GeneratedBy scripts/sync_rules.sh
 # @Maintainer  tickmao
@@ -13,6 +13,9 @@ HOST-SUFFIX,bytegecko-i18n.com,TikTok
 HOST-SUFFIX,byteintlapi.com,TikTok
 HOST-SUFFIX,byteoversea.com,TikTok
 HOST-SUFFIX,capcut.com,TikTok
+HOST-SUFFIX,capcutapi.com,TikTok
+HOST-SUFFIX,capcutapi.us,TikTok
+HOST-SUFFIX,capcutstatic.com,TikTok
 HOST-SUFFIX,ibytedtos.com,TikTok
 HOST-SUFFIX,ibyteimg.com,TikTok
 HOST-SUFFIX,ipstatp.com,TikTok
